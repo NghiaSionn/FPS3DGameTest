@@ -1,0 +1,193 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class Weapon : MonoBehaviour
+{
+    public bool isShooting, readyToShoot;
+    bool allowRest = true;
+    public float shootingDelay = 2f;
+
+    [Header("Thông số của đạn")]
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+    public float bulletVelocity = 30;
+    public float bulletPrefabLifeTime = 3f;
+    public int bulletsPerBurst = 3;
+    public int burstBulletsLeft;
+    public float spreadIntensity;
+
+    public GameObject muzzleEffect;
+    private Animator animator;
+
+    [Header("Thay đạn")]
+    public float reloadTime;
+    public int magazineSize, bulletsLeft;
+    public bool isReloading;
+
+    public enum WeaponModel
+    {
+        AK47
+    }
+
+    public enum ShootingMode
+    {
+        Single,
+        Burst,
+        Auto
+    }
+
+    [Header("Súng")]
+    public WeaponModel model;
+
+    [Header("Chế độ bắn")]
+    public ShootingMode currentShootingMode;
+
+    private void Awake()
+    {
+        readyToShoot = true;
+        burstBulletsLeft = bulletsPerBurst;
+        animator = GetComponent<Animator>();
+
+        bulletsLeft = magazineSize;
+    }
+
+    void Update()
+    {
+        if (bulletsLeft == 0 && isShooting)
+        {
+            SoundManager.Instance.emtyshooting.Play();
+        }
+
+        if (currentShootingMode == ShootingMode.Auto)
+        {
+            isShooting = Input.GetKey(KeyCode.Mouse0);
+        }
+        else if (currentShootingMode == ShootingMode.Single)
+        {
+            isShooting = Input.GetKeyDown(KeyCode.Mouse0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
+        {
+            Debug.Log("Thay Đạn");
+            Reload();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            animator.SetTrigger("STARE");
+        }
+
+
+        // Nạp đạn tự động
+        if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
+        {
+            // Reload();
+        }
+
+        if (readyToShoot && isShooting && bulletsLeft > 0 && !isReloading)
+        {
+            burstBulletsLeft = bulletsPerBurst;
+            FireWeapon();
+        }
+
+        if (AmmoManager.Instance.ammoDisplay != null)
+        {
+            AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst} / {magazineSize / bulletsPerBurst}";
+        }
+
+
+        
+    }
+
+
+    private void FireWeapon()
+    {
+        if (isReloading) return; // Không bắn khi đang nạp đạn
+
+        bulletsLeft--;
+
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
+        animator.SetTrigger("RECOIL");
+
+        SoundManager.Instance.shootingSoundAK47.Play();
+
+        readyToShoot = false;
+        Vector3 shootingDirection = CalculateDirectionAndSpread();
+
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.LookRotation(shootingDirection));
+        bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletVelocity, ForceMode.Impulse);
+        StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLifeTime));
+
+        if (allowRest)
+        {
+            Invoke("ResetShot", shootingDelay);
+            allowRest = false;
+        }
+
+        if (currentShootingMode == ShootingMode.Burst && burstBulletsLeft > 1)
+        {
+            burstBulletsLeft--;
+            Invoke("FireWeapon", shootingDelay);
+        }
+    }
+
+
+    private void Reload()
+    {
+        isReloading = true;
+        Invoke("ReloadCompleted", reloadTime);
+        animator.SetTrigger("RELOAD");
+        SoundManager.Instance.reloadSoundAK48.Play();
+    }
+
+    private void ReloadCompleted()
+    {
+        bulletsLeft = magazineSize;
+        isReloading = false;
+    }
+
+    private void ResetShot()
+    {
+        readyToShoot = true;
+        allowRest = true;
+    }
+
+    private Vector3 CalculateDirectionAndSpread()
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+
+        Vector3 targetPoint;
+        if (Physics.Raycast(ray, out hit))
+        {
+            targetPoint = hit.point;
+        }
+        else
+        {
+            targetPoint = ray.GetPoint(100);
+        }
+
+        Vector3 direction = targetPoint - bulletSpawn.position;
+
+       
+        direction.x += UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
+        direction.y += UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
+
+        return direction.normalized;
+    }
+
+
+    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(bullet, 10f);
+    }
+
+    
+
+}
