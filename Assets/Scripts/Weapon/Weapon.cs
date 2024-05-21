@@ -27,6 +27,10 @@ public class Weapon : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
+
+    private bool isScoped = false;
+
+
     public enum WeaponModel
     {
         AK47
@@ -77,9 +81,11 @@ public class Weapon : MonoBehaviour
         }
 
 
+        //ngắm
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            animator.SetTrigger("STARE");
+            isScoped = !isScoped;
+            animator.SetBool("STARE", isScoped);
         }
 
 
@@ -99,8 +105,6 @@ public class Weapon : MonoBehaviour
         {
             AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst} / {magazineSize / bulletsPerBurst}";
         }
-
-
         
     }
 
