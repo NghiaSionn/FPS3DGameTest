@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -27,8 +26,10 @@ public class Weapon : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
+    public bool isScoped = false;
 
-    private bool isScoped = false;
+
+    public CameraChange cameraChange; 
 
 
     public enum WeaponModel
@@ -56,6 +57,12 @@ public class Weapon : MonoBehaviour
         animator = GetComponent<Animator>();
 
         bulletsLeft = magazineSize;
+
+      
+        if (cameraChange == null)
+        {
+            cameraChange = FindObjectOfType<CameraChange>();
+        }
     }
 
     void Update()
@@ -65,14 +72,18 @@ public class Weapon : MonoBehaviour
             SoundManager.Instance.emtyshooting.Play();
         }
 
+
         if (currentShootingMode == ShootingMode.Auto)
         {
             isShooting = Input.GetKey(KeyCode.Mouse0);
         }
+
+
         else if (currentShootingMode == ShootingMode.Single)
         {
             isShooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
+
 
         if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
         {
@@ -81,13 +92,43 @@ public class Weapon : MonoBehaviour
         }
 
 
-        //ngắm
+        // ngắm
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             isScoped = !isScoped;
-            animator.SetBool("STARE", isScoped);
-        }
+            if (Camera.main.fieldOfView == 30f)
+            {            
+                if (cameraChange.camMode == 1) 
+                {
+                    Camera.main.fieldOfView = 60f;
+                    animator.SetBool("STARE", isScoped);
+                }
+            }
 
+
+            else if (Camera.main.fieldOfView == 40f)
+            {
+                if (cameraChange.camMode == 0)
+                {
+                    Camera.main.fieldOfView = 60f;                
+                }
+            }
+
+
+            else
+            {               
+                if (cameraChange.camMode == 1)
+                {
+                    Camera.main.fieldOfView = 30f;
+                    animator.SetBool("STARE", isScoped);
+                }
+                else
+                {
+                    Camera.main.fieldOfView = 40f;
+                }
+            }
+            
+        }
 
         // Nạp đạn tự động
         if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
@@ -105,9 +146,7 @@ public class Weapon : MonoBehaviour
         {
             AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst} / {magazineSize / bulletsPerBurst}";
         }
-        
     }
-
 
     private void FireWeapon()
     {
@@ -139,7 +178,6 @@ public class Weapon : MonoBehaviour
             Invoke("FireWeapon", shootingDelay);
         }
     }
-
 
     private void Reload()
     {
@@ -178,20 +216,16 @@ public class Weapon : MonoBehaviour
 
         Vector3 direction = targetPoint - bulletSpawn.position;
 
-       
         direction.x += UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
         direction.y += UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
 
         return direction.normalized;
     }
 
-
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
         Destroy(bullet, 10f);
+        
     }
-
-    
-
 }

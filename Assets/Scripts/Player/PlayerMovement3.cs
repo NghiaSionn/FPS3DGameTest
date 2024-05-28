@@ -22,6 +22,9 @@ public class PlayerMovement3 : MonoBehaviour
     private float rotationX = 0;
     [SerializeField] private CharacterController characterController;
 
+
+    [SerializeField] public Animator animator;
+
     private bool canMove = true;
 
     void Start()
@@ -58,6 +61,7 @@ public class PlayerMovement3 : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftControl) && canMove)
         {
+            
             characterController.height = crouchHeight;
             walkSpeed = crouchSpeed;
             runSpeed = crouchSpeed;
