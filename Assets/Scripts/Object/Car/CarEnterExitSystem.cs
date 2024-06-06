@@ -17,6 +17,7 @@ public class CarEnterExitSystem : MonoBehaviour
     public GameObject DriveUi;
     public GameObject playerPosition;
     public GameObject middlePoint;
+    public GameObject ammo;
 
     bool Candrive;
 
@@ -42,6 +43,7 @@ public class CarEnterExitSystem : MonoBehaviour
             DriveUi.gameObject.SetActive(false);
             playerPosition.gameObject.SetActive(false);
             middlePoint.gameObject.SetActive(false);
+            ammo.gameObject.SetActive(false);
 
 
             // Here we parent Car with player
@@ -60,7 +62,8 @@ public class CarEnterExitSystem : MonoBehaviour
 
 
             playerPosition.gameObject.SetActive(true);
-            middlePoint.gameObject.SetActive(false);
+            middlePoint.gameObject.SetActive(true);
+            ammo.gameObject.SetActive(true);
 
 
             // Here We Unparent the Player with Car
