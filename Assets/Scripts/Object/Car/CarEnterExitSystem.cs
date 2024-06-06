@@ -1,16 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 public class CarEnterExitSystem : MonoBehaviour
 {
-
     public MonoBehaviour CarController;
     public Transform Car;
     public Transform Player;
 
-    
     public GameObject PlayerCam;
     public GameObject CarCam;
 
@@ -19,64 +17,85 @@ public class CarEnterExitSystem : MonoBehaviour
     public GameObject middlePoint;
     public GameObject ammo;
 
+    public WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
+    public WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
+
     bool Candrive;
-
-
+    bool isDriving; 
 
     // Start is called before the first frame update
     void Start()
     {
         CarController.enabled = false;
         DriveUi.gameObject.SetActive(false);
+        isDriving = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.F) && Candrive)  
+        if (Input.GetKeyDown(KeyCode.F))
         {
-
-            CarController.enabled = true; 
-            
-
-            DriveUi.gameObject.SetActive(false);
-            playerPosition.gameObject.SetActive(false);
-            middlePoint.gameObject.SetActive(false);
-            ammo.gameObject.SetActive(false);
-
-
-            // Here we parent Car with player
-            Player.transform.SetParent(Car);
-            Player.gameObject.SetActive(false);
-           
-
-            // Camera
-            PlayerCam.gameObject.SetActive(false);
-            CarCam.gameObject.SetActive(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            CarController.enabled = false; 
-
-
-            playerPosition.gameObject.SetActive(true);
-            middlePoint.gameObject.SetActive(true);
-            ammo.gameObject.SetActive(true);
-
-
-            // Here We Unparent the Player with Car
-            Player.transform.SetParent(null);
-            Player.gameObject.SetActive(true);
-
-           
-
-            PlayerCam.gameObject.SetActive(true);
-            CarCam.gameObject.SetActive(false);
+            if (Candrive && !isDriving) // Nếu người chơi có thể lái và chưa ở trong xe
+            {
+                EnterCar();
+            }
+            else if (isDriving) // Nếu người chơi đang ở trong xe
+            {
+                ExitCar();
+            }
         }
     }
 
+    void EnterCar()
+    {
+        CarController.enabled = true;
+        isDriving = true;
+
+        DriveUi.gameObject.SetActive(false);
+        playerPosition.gameObject.SetActive(false);
+        middlePoint.gameObject.SetActive(false);
+        ammo.gameObject.SetActive(false);
+
+        // Gắn người chơi vào xe
+        Player.transform.SetParent(Car);
+        Player.gameObject.SetActive(false);
+
+        // Chuyển đổi camera
+        PlayerCam.gameObject.SetActive(false);
+        CarCam.gameObject.SetActive(true);
+    }
+
+    void ExitCar()
+    {
+        CarController.enabled = false;
+        isDriving = false;
+
+        playerPosition.gameObject.SetActive(true);
+        middlePoint.gameObject.SetActive(true);
+        ammo.gameObject.SetActive(true);
+
+        // Tách người chơi khỏi xe
+        Player.transform.SetParent(null);
+        Player.gameObject.SetActive(true);
+
+        // Chuyển đổi camera
+        PlayerCam.gameObject.SetActive(true);
+        CarCam.gameObject.SetActive(false);
+
+        // Dừng xe lại bằng cách áp dụng lực phanh tối đa
+        ApplyBrakes();
+    }
+
+    void ApplyBrakes()
+    {
+        float maxBrakeTorque = 10000f; // Đặt giá trị lực phanh tối đa
+
+        frontRightWheelCollider.brakeTorque = maxBrakeTorque;
+        frontLeftWheelCollider.brakeTorque = maxBrakeTorque;
+        rearLeftWheelCollider.brakeTorque = maxBrakeTorque;
+        rearRightWheelCollider.brakeTorque = maxBrakeTorque;
+    }
 
     void OnTriggerStay(Collider col)
     {
