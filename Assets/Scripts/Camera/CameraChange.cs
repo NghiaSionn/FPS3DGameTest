@@ -9,6 +9,7 @@ public class CameraChange : MonoBehaviour
     public int camMode;
     public Weapon weapon;  // Reference to the Weapon script
 
+
     // Start is called before the first frame update
     void Start()
     {

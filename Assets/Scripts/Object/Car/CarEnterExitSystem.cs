@@ -36,7 +36,7 @@ public class CarEnterExitSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Candrive && !isDriving) // Nếu người chơi có thể lái và chưa ở trong xe
+            if (Candrive && !isDriving ) // người chơi có thể lái và chưa ở trong xe
             {
                 EnterCar();
             }

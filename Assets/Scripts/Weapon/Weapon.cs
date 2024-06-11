@@ -34,7 +34,8 @@ public class Weapon : MonoBehaviour
 
     public enum WeaponModel
     {
-        AK47
+        AK47,
+        Sniper
     }
 
     public enum ShootingMode

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public Weapon wp;
+
+
+
     private void OnCollisionEnter(Collision objectWeHit)
     {
        if (objectWeHit.gameObject.CompareTag("Target"))
@@ -25,7 +29,9 @@ public class Bullet : MonoBehaviour
         if (objectWeHit.gameObject.CompareTag("Bear"))
         {
             Debug.Log("Bắn vào chai");
+          
             objectWeHit.gameObject.GetComponent<BearBottle>().Shatter();
+            Destroy(wp.bulletPrefab);
 
         }
     }
@@ -42,5 +48,8 @@ public class Bullet : MonoBehaviour
             );
 
         hole.transform.SetParent(objectWeHit.gameObject.transform);
+
+
+        Destroy(hole,10f);
     }
 }
