@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraChange : MonoBehaviour
 {
     public GameObject thirdCam;
     public GameObject firstCam;
     public int camMode;
-    public Weapon weapon;  // Reference to the Weapon script
+    public Weapon weapon;  
 
 
     // Start is called before the first frame update

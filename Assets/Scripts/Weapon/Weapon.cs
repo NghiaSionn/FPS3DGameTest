@@ -29,14 +29,21 @@ public class Weapon : MonoBehaviour
     public bool isScoped = false;
 
 
-    public CameraChange cameraChange; 
+    public CameraChange cameraChange;
 
+
+    public Vector3 spawnPosition;
+    public Vector3 spawnRotation;
 
     public enum WeaponModel
     {
         AK47,
         Sniper
     }
+
+
+    public WeaponModel thisWeaponModel;
+
 
     public enum ShootingMode
     {
@@ -45,8 +52,8 @@ public class Weapon : MonoBehaviour
         Auto
     }
 
-    [Header("Súng")]
-    public WeaponModel model;
+    //[Header("Súng")]
+    //public WeaponModel model;
 
     [Header("Chế độ bắn")]
     public ShootingMode currentShootingMode;
@@ -158,7 +165,10 @@ public class Weapon : MonoBehaviour
         muzzleEffect.GetComponent<ParticleSystem>().Play();
         animator.SetTrigger("RECOIL");
 
-        SoundManager.Instance.shootingSoundAK47.Play();
+        //SoundManager.Instance.shootingSoundAK47.Play();
+
+
+        SoundManager.Instance.PlayShootingSound(thisWeaponModel);
 
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread();
@@ -185,7 +195,10 @@ public class Weapon : MonoBehaviour
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
         animator.SetTrigger("RELOAD");
-        SoundManager.Instance.reloadSoundAK48.Play();
+        //SoundManager.Instance.reloadSoundAK48.Play();
+
+
+        SoundManager.Instance.PlayReloadSound(thisWeaponModel);
     }
 
     private void ReloadCompleted()

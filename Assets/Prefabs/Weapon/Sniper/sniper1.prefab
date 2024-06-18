@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4960103078218306047}
   - component: {fileID: 352760729465974138}
   - component: {fileID: 6386850022399499587}
+  - component: {fileID: 5410784271331437849}
   m_Layer: 0
   m_Name: sniper1
   m_TagString: Untagged
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShooting: 0
   readyToShoot: 0
-  shootingDelay: 5
+  shootingDelay: 1.5
   bulletPrefab: {fileID: 6444723619071279956, guid: 141d3d231c4a64946bf9b9eacbe79392, type: 3}
   bulletSpawn: {fileID: 4313533040755740518}
   bulletVelocity: 700
@@ -108,14 +109,37 @@ MonoBehaviour:
   burstBulletsLeft: 0
   spreadIntensity: 0
   muzzleEffect: {fileID: 2192926379748263894}
-  reloadTime: 3
+  reloadTime: 1.5
   magazineSize: 5
   bulletsLeft: 0
   isReloading: 0
   isScoped: 0
   cameraChange: {fileID: 0}
-  model: 1
+  spawnPosition: {x: -9.84, y: 1.451, z: 20.69}
+  spawnRotation: {x: -7.34, y: -90, z: 0}
+  thisWeaponModel: 1
   currentShootingMode: 0
+--- !u!95 &5410784271331437849
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850815925763823386}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 042f94991baf0cc4aa37280a767cc273, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2192926379748263894
 GameObject:
   m_ObjectHideFlags: 0

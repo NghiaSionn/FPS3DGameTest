@@ -4828,14 +4828,13 @@ GameObject:
   - component: {fileID: 1320824695967984123}
   - component: {fileID: 1322037347133005992}
   - component: {fileID: 8547371124697782019}
-  - component: {fileID: 8678134888931314006}
   m_Layer: 7
   m_Name: AK47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1195591935135858670
 Transform:
   m_ObjectHideFlags: 0
@@ -4916,7 +4915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isShooting: 0
   readyToShoot: 0
-  shootingDelay: 0.3
+  shootingDelay: 0.1
   bulletPrefab: {fileID: 6444723619071279956, guid: 141d3d231c4a64946bf9b9eacbe79392, type: 3}
   bulletSpawn: {fileID: 7592869216370891569}
   bulletVelocity: 700
@@ -4931,7 +4930,9 @@ MonoBehaviour:
   isReloading: 0
   isScoped: 0
   cameraChange: {fileID: 0}
-  model: 0
+  spawnPosition: {x: -13.46, y: 1.377551, z: 20.71}
+  spawnRotation: {x: -0.87, y: -90, z: -22.78}
+  thisWeaponModel: 0
   currentShootingMode: 2
 --- !u!95 &8547371124697782019
 Animator:
@@ -4941,7 +4942,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8311397118991689307}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dc541e7e724c0df45bd76d90993837fa, type: 2}
   m_CullingMode: 0
@@ -4954,18 +4955,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8678134888931314006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8311397118991689307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9478d6c89b5d10346bac836271a9e91c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clipProjector: {fileID: 0}
-  checkDistance: 1
-  newDirection: {x: 0, y: -90, z: 0}

@@ -20,9 +20,14 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform, rearRightWheelTransform;
 
-    private void FixedUpdate()
+    private void Update()
     {
         GetInput();
+        
+    }
+
+    private void FixedUpdate()
+    {
         HandleMotor();
         HandleSteering();
         UpdateWheels();
@@ -43,6 +48,7 @@ public class CarController : MonoBehaviour
     private void HandleMotor()
     {
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
+        Debug.Log("front torque: " + frontLeftWheelCollider.motorTorque);
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();
