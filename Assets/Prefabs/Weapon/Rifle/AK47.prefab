@@ -4828,9 +4828,12 @@ GameObject:
   - component: {fileID: 1320824695967984123}
   - component: {fileID: 1322037347133005992}
   - component: {fileID: 8547371124697782019}
+  - component: {fileID: 5778133668952208298}
+  - component: {fileID: 324779673357156276}
+  - component: {fileID: 3798655939888885740}
   m_Layer: 7
   m_Name: AK47
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4913,6 +4916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77eac24862dab94cbfeeaa586cde69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActiveWeapon: 0
   isShooting: 0
   readyToShoot: 0
   shootingDelay: 0.1
@@ -4930,8 +4934,8 @@ MonoBehaviour:
   isReloading: 0
   isScoped: 0
   cameraChange: {fileID: 0}
-  spawnPosition: {x: -13.46, y: 1.377551, z: 20.71}
-  spawnRotation: {x: -0.87, y: -90, z: -22.78}
+  spawnPosition: {x: 0.398, y: 0.23, z: 0.823}
+  spawnRotation: {x: 0, y: 0, z: 0}
   thisWeaponModel: 0
   currentShootingMode: 2
 --- !u!95 &8547371124697782019
@@ -4955,3 +4959,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5778133668952208298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8311397118991689307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44142419377a54a888bc02a1d67e01f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &324779673357156276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8311397118991689307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!65 &3798655939888885740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8311397118991689307}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.23086022, y: 1.17329, z: 4.895917}
+  m_Center: {x: -0.005947294, y: 0.20827577, z: 0.031448133}

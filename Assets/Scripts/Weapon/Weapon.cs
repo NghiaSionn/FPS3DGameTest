@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public bool isActiveWeapon;
+
+
     public bool isShooting, readyToShoot;
     bool allowRest = true;
     public float shootingDelay = 2f;
@@ -19,7 +22,7 @@ public class Weapon : MonoBehaviour
     public float spreadIntensity;
 
     public GameObject muzzleEffect;
-    private Animator animator;
+    internal Animator animator;
 
     [Header("Thay đạn")]
     public float reloadTime;
@@ -75,84 +78,87 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (bulletsLeft == 0 && isShooting)
+        if (isActiveWeapon)
         {
-            SoundManager.Instance.emtyshooting.Play();
-        }
-
-
-        if (currentShootingMode == ShootingMode.Auto)
-        {
-            isShooting = Input.GetKey(KeyCode.Mouse0);
-        }
-
-
-        else if (currentShootingMode == ShootingMode.Single)
-        {
-            isShooting = Input.GetKeyDown(KeyCode.Mouse0);
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
-        {
-            Debug.Log("Thay Đạn");
-            Reload();
-        }
-
-
-        // ngắm
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            isScoped = !isScoped;
-            if (Camera.main.fieldOfView == 30f)
-            {            
-                if (cameraChange.camMode == 1) 
-                {
-                    Camera.main.fieldOfView = 60f;
-                    animator.SetBool("STARE", isScoped);
-                }
-            }
-
-
-            else if (Camera.main.fieldOfView == 40f)
+            if (bulletsLeft == 0 && isShooting)
             {
-                if (cameraChange.camMode == 0)
-                {
-                    Camera.main.fieldOfView = 60f;                
-                }
+                SoundManager.Instance.emtyshooting.Play();
             }
 
 
-            else
-            {               
-                if (cameraChange.camMode == 1)
+            if (currentShootingMode == ShootingMode.Auto)
+            {
+                isShooting = Input.GetKey(KeyCode.Mouse0);
+            }
+
+
+            else if (currentShootingMode == ShootingMode.Single)
+            {
+                isShooting = Input.GetKeyDown(KeyCode.Mouse0);
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
+            {
+                Debug.Log("Thay Đạn");
+                Reload();
+            }
+
+
+            // ngắm
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                isScoped = !isScoped;
+                if (Camera.main.fieldOfView == 30f)
                 {
-                    Camera.main.fieldOfView = 30f;
-                    animator.SetBool("STARE", isScoped);
+                    if (cameraChange.camMode == 1)
+                    {
+                        Camera.main.fieldOfView = 60f;
+                        animator.SetBool("STARE", isScoped);
+                    }
                 }
+
+
+                else if (Camera.main.fieldOfView == 40f)
+                {
+                    if (cameraChange.camMode == 0)
+                    {
+                        Camera.main.fieldOfView = 60f;
+                    }
+                }
+
+
                 else
                 {
-                    Camera.main.fieldOfView = 40f;
+                    if (cameraChange.camMode == 1)
+                    {
+                        Camera.main.fieldOfView = 30f;
+                        animator.SetBool("STARE", isScoped);
+                    }
+                    else
+                    {
+                        Camera.main.fieldOfView = 40f;
+                    }
                 }
+
             }
-            
-        }
 
-        // Nạp đạn tự động
-        if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
-        {
-            // Reload();
-        }
+            // Nạp đạn tự động
+            if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
+            {
+                // Reload();
+            }
 
-        if (readyToShoot && isShooting && bulletsLeft > 0 && !isReloading)
-        {
-            burstBulletsLeft = bulletsPerBurst;
-            FireWeapon();
-        }
+            if (readyToShoot && isShooting && bulletsLeft > 0 && !isReloading)
+            {
+                burstBulletsLeft = bulletsPerBurst;
+                FireWeapon();
+            }
 
-        if (AmmoManager.Instance.ammoDisplay != null)
-        {
-            AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst} / {magazineSize / bulletsPerBurst}";
+            if (AmmoManager.Instance.ammoDisplay != null)
+            {
+                AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst} / {magazineSize / bulletsPerBurst}";
+            } 
         }
     }
 

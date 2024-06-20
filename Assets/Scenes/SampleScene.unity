@@ -133,35 +133,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.46
+      value: -12.628
       objectReference: {fileID: 0}
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3775513
+      value: 1.32
       objectReference: {fileID: 0}
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.71
+      value: 20.763
       objectReference: {fileID: 0}
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6921006
+      value: 0.6931808
       objectReference: {fileID: 0}
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.13437709
+      value: 0.13964385
       objectReference: {fileID: 0}
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.69422096
+      value: -0.6931808
       objectReference: {fileID: 0}
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.14490253
+      value: -0.13964385
       objectReference: {fileID: 0}
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.87
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -443,7 +443,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95944738}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0368}
+  m_LocalPosition: {x: 0, y: 0, z: -1.1774}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -451,8 +451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -959.14386, y: -522.29}
-  m_SizeDelta: {x: 6.8741, y: 7.1493}
+  m_AnchoredPosition: {x: -960.2406, y: -522.29}
+  m_SizeDelta: {x: 4.6806, y: 4.868}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &95944740
 MonoBehaviour:
@@ -492,6 +492,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95944738}
   m_CullTransparentMesh: 1
+--- !u!1 &124724564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124724565}
+  - component: {fileID: 124724566}
+  m_Layer: 0
+  m_Name: Weapon Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &124724565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124724564}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.84838, y: 1.4631208, z: 20.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124724566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124724564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d132b915b53a74a9f4d8499edc34e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlots:
+  - {fileID: 1920162772}
+  - {fileID: 1728608598}
+  activeWeaponSlot: {fileID: 0}
 --- !u!1 &133355898
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 3, y: 2}
+  m_AnchoredPosition: {x: 3, y: 7}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &223666850
@@ -998,6 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b7e52d7d2925f48ba4cd588c82c0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoveredWeapon: {fileID: 0}
 --- !u!4 &276203714
 Transform:
   m_ObjectHideFlags: 0
@@ -2323,7 +2372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 1, y: 300}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &642596633
@@ -4759,6 +4808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sniper1
       objectReference: {fileID: 0}
+    - target: {fileID: 5410784271331437849, guid: 7a4ec29fd41463844aea27a363230f55, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 1860675458}
     - target: {fileID: 6004336086480945823, guid: 7a4ec29fd41463844aea27a363230f55, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.84
@@ -7204,6 +7257,147 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849709775}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!90 &1860675458
+Avatar:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Automatic Avatar
+  m_AvatarSize: 716
+  m_Avatar:
+    serializedVersion: 3
+    m_AvatarSkeleton:
+      data:
+        m_Node:
+        - m_ParentId: -1
+          m_AxesId: -1
+        - m_ParentId: 0
+          m_AxesId: -1
+        - m_ParentId: 1
+          m_AxesId: -1
+        m_ID: 000000000831ba54a493568b
+        m_AxesArray: []
+    m_AvatarSkeletonPose:
+      data:
+        m_X:
+        - t: {x: -9.84, y: 1.451, z: 20.69}
+          q: {x: -0.045261785, y: -0.7056567, z: -0.045261785, w: 0.7056567}
+          s: {x: 0.28937134, y: 0.28937134, z: 0.28937134}
+        - t: {x: 0.01, y: 0.42, z: 4.58}
+          q: {x: -0, y: -0, z: -0, w: 1}
+          s: {x: 0.5571304, y: 0.5955438, z: 3.0442753}
+        - t: {x: -0.041, y: 0.035, z: -0.076}
+          q: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+          s: {x: 1.5, y: 10, z: 10}
+    m_DefaultPose:
+      data:
+        m_X:
+        - t: {x: -9.84, y: 1.451, z: 20.69}
+          q: {x: -0.045261785, y: -0.7056567, z: -0.045261785, w: 0.7056567}
+          s: {x: 0.28937134, y: 0.28937134, z: 0.28937134}
+        - t: {x: 0.01, y: 0.42, z: 4.58}
+          q: {x: -0, y: -0, z: -0, w: 1}
+          s: {x: 0.5571304, y: 0.5955438, z: 3.0442753}
+        - t: {x: -0.041, y: 0.035, z: -0.076}
+          q: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+          s: {x: 1.5, y: 10, z: 10}
+    m_SkeletonNameIDArray: 000000000831ba54aeec2d7a
+    m_Human:
+      data:
+        serializedVersion: 2
+        m_RootX:
+          t: {x: 0, y: 0, z: 0}
+          q: {x: 0, y: 0, z: 0, w: 1}
+          s: {x: 1, y: 1, z: 1}
+        m_Skeleton:
+          data:
+            m_Node: []
+            m_ID: 
+            m_AxesArray: []
+        m_SkeletonPose:
+          data:
+            m_X: []
+        m_LeftHand:
+          data:
+            m_HandBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_RightHand:
+          data:
+            m_HandBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_HumanBoneIndex: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        m_HumanBoneMass:
+        - 0.14545456
+        - 0.12121213
+        - 0.12121213
+        - 0.048484854
+        - 0.048484854
+        - 0.009696971
+        - 0.009696971
+        - 0.030303033
+        - 0.14545456
+        - 0.14545456
+        - 0.012121214
+        - 0.048484854
+        - 0.006060607
+        - 0.006060607
+        - 0.024242427
+        - 0.024242427
+        - 0.01818182
+        - 0.01818182
+        - 0.006060607
+        - 0.006060607
+        - 0.0024242427
+        - 0.0024242427
+        - 0
+        - 0
+        - 0
+        m_Scale: 1
+        m_ArmTwist: 0.5
+        m_ForeArmTwist: 0.5
+        m_UpperLegTwist: 0.5
+        m_LegTwist: 0.5
+        m_ArmStretch: 0.05
+        m_LegStretch: 0.05
+        m_FeetSpacing: 0
+        m_HasLeftHand: 0
+        m_HasRightHand: 0
+        m_HasTDoF: 0
+    m_HumanSkeletonIndexArray: 
+    m_HumanSkeletonReverseIndexArray: 
+    m_RootMotionBoneIndex: -1
+    m_RootMotionBoneX:
+      t: {x: 0, y: 0, z: 0}
+      q: {x: 0, y: 0, z: 0, w: 1}
+      s: {x: 1, y: 1, z: 1}
+    m_RootMotionSkeleton:
+      data:
+        m_Node: []
+        m_ID: 
+        m_AxesArray: []
+    m_RootMotionSkeletonPose:
+      data:
+        m_X: []
+    m_RootMotionSkeletonIndexArray: 
+  m_TOS:
+    1421488392: BulletSpawn (1)
+    0: 
+    2337706916: BulletSpawn (1)/MuzzleFlashEffect
+  m_HumanDescription:
+    serializedVersion: 3
+    m_Human: []
+    m_Skeleton: []
+    m_ArmTwist: 0.5
+    m_ForeArmTwist: 0.5
+    m_UpperLegTwist: 0.5
+    m_LegTwist: 0.5
+    m_ArmStretch: 0.05
+    m_LegStretch: 0.05
+    m_FeetSpacing: 0
+    m_GlobalScale: 1
+    m_RootMotionBoneName: 
+    m_HasTranslationDoF: 0
+    m_HasExtraRoot: 0
+    m_SkeletonHasParents: 1
 --- !u!1 &1885272919
 GameObject:
   m_ObjectHideFlags: 0
@@ -12787,3 +12981,4 @@ SceneRoots:
   - {fileID: 1312577952}
   - {fileID: 15898032}
   - {fileID: 276203714}
+  - {fileID: 124724565}

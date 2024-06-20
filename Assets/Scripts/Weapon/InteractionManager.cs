@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance { get; set; }
 
+
+    public Weapon hoveredWeapon = null;
 
     private void Awake()
     {
@@ -26,14 +29,30 @@ public class InteractionManager : MonoBehaviour
         RaycastHit hit;
 
 
-        if(Physics.Raycast(ray,out hit))
+        if (Physics.Raycast(ray, out hit))
         {
             GameObject objectHitByRaycast = hit.transform.gameObject;
 
-            if(objectHitByRaycast.GetComponent<Weapon>())
+
+            if (objectHitByRaycast.GetComponent<Weapon>())
             {
-                print("Ða chon vu khi");
+                hoveredWeapon = objectHitByRaycast.gameObject.GetComponent<Weapon>();
+                hoveredWeapon.GetComponent<Outline>().enabled = true;
+
+              
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    WeaponManager.Instance.PickupWeapon(objectHitByRaycast.gameObject);
+                    hoveredWeapon.GetComponent<Outline>().enabled = false;
+                }
             }
-        }
+            else 
+            {
+                if(hoveredWeapon)
+                {
+                    hoveredWeapon.GetComponent<Outline>().enabled = false;
+                }
+            }
+        }       
     }
 }
