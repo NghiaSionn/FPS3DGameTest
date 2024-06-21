@@ -47,8 +47,7 @@ public class CarController : MonoBehaviour
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
-        Debug.Log("front torque: " + frontLeftWheelCollider.motorTorque);
+        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;      
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();

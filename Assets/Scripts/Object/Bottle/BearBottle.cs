@@ -14,6 +14,8 @@ public class BearBottle : MonoBehaviour
         {
             part.isKinematic = false;
         }
+
+        Destroy(gameObject, 3f);
     }
 
 

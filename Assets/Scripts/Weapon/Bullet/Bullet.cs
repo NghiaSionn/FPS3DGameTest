@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
-{
-    public Weapon wp;
-
-
+{  
 
     private void OnCollisionEnter(Collision objectWeHit)
     {
@@ -31,7 +28,7 @@ public class Bullet : MonoBehaviour
             Debug.Log("Bắn vào chai");
           
             objectWeHit.gameObject.GetComponent<BearBottle>().Shatter();
-            Destroy(wp.bulletPrefab);
+            Destroy(gameObject);
 
         }
     }
@@ -50,6 +47,6 @@ public class Bullet : MonoBehaviour
         hole.transform.SetParent(objectWeHit.gameObject.transform);
 
 
-        Destroy(hole,10f);
+        Destroy(hole,5f);
     }
 }

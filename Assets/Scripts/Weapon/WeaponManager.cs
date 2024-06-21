@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager Instance { get; set; }
@@ -12,6 +13,11 @@ public class WeaponManager : MonoBehaviour
 
 
     public GameObject activeWeaponSlot;
+
+
+    [Header("Ammo")]
+    public int totalRifleAmmo = 0;
+    public int totalSniperAmmo = 0;
 
 
     private void Awake()
@@ -90,6 +96,25 @@ public class WeaponManager : MonoBehaviour
         weapon.animator.enabled = true;
     }
 
+
+    internal void PickupAmmo(AmmoBox ammo)
+    {
+        switch (ammo.ammoType)
+        {
+            case AmmoBox.AmmoType.RifleAmmo:
+                totalRifleAmmo += ammo.ammoAmount;
+                break;
+            case AmmoBox.AmmoType.SpinerAmmo:
+                totalSniperAmmo += ammo.ammoAmount;
+
+
+                break;
+            default:
+                break;
+        }
+    }
+
+
     private void DropCurrentWeapon(GameObject pickedupWeapon)
     {
         if(activeWeaponSlot.transform.childCount > 0)
@@ -124,4 +149,40 @@ public class WeaponManager : MonoBehaviour
             newWeapon.isActiveWeapon = true;
         }
     }
+
+    internal void DescreaseTotalAmmo(int bulletsToDecreasel, Weapon.WeaponModel thisWeaponModel)
+    {
+        switch (thisWeaponModel)
+        {
+            case Weapon.WeaponModel.AK47:
+                totalRifleAmmo -= bulletsToDecreasel;
+                break;
+            case Weapon.WeaponModel.Sniper:
+                totalSniperAmmo -= bulletsToDecreasel;
+                break;
+
+
+            default:
+                break;
+        }
+    }
+
+
+
+    public int CheckAmmoLeftFor(Weapon.WeaponModel thisWeaponModel)
+    {
+        switch (thisWeaponModel)
+        {
+            case Weapon.WeaponModel.AK47:
+                return totalRifleAmmo;
+
+            case Weapon.WeaponModel.Sniper:
+                return totalSniperAmmo;
+
+
+            default:
+                return 0;
+        }
+    }
+
 }

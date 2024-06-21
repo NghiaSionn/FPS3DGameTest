@@ -1,18 +1,21 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance { get; set; }
 
-
     public Weapon hoveredWeapon = null;
+    public AmmoBox hoveredAmmoBox = null;
+
+
+    public TextMeshProUGUI interactionText;
 
     private void Awake()
     {
-        if(Instance != null && Instance != this )
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
@@ -22,37 +25,83 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
+        interactionText.gameObject.SetActive(false);
+
+
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
+        bool weaponHit = false;
+        bool ammoBoxHit = false;
 
         if (Physics.Raycast(ray, out hit))
         {
             GameObject objectHitByRaycast = hit.transform.gameObject;
 
-
-            if (objectHitByRaycast.GetComponent<Weapon>())
+            // Weapon
+            if (objectHitByRaycast.GetComponent<Weapon>() && objectHitByRaycast.GetComponent<Weapon>().isActiveWeapon == false)
             {
-                hoveredWeapon = objectHitByRaycast.gameObject.GetComponent<Weapon>();
-                hoveredWeapon.GetComponent<Outline>().enabled = true;
+                weaponHit = true;
+                if (hoveredWeapon != objectHitByRaycast.GetComponent<Weapon>())
+                {
+                    if (hoveredWeapon != null)
+                    {
+                        hoveredWeapon.GetComponent<Outline>().enabled = false;
+                    }
+                    hoveredWeapon = objectHitByRaycast.GetComponent<Weapon>();
+                    hoveredWeapon.GetComponent<Outline>().enabled = true;
+                }
 
-              
+
+                interactionText.gameObject.SetActive(true); 
+                interactionText.text = "Press F";
+
+
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     WeaponManager.Instance.PickupWeapon(objectHitByRaycast.gameObject);
-                    hoveredWeapon.GetComponent<Outline>().enabled = false;
                 }
             }
-            else 
+
+            // Ammo Box
+            if (objectHitByRaycast.GetComponent<AmmoBox>())
             {
-                if(hoveredWeapon)
+                ammoBoxHit = true;
+                if (hoveredAmmoBox != objectHitByRaycast.GetComponent<AmmoBox>())
                 {
-                    hoveredWeapon.GetComponent<Outline>().enabled = false;
+                    if (hoveredAmmoBox != null)
+                    {
+                        hoveredAmmoBox.GetComponent<Outline>().enabled = false;
+                    }
+                    hoveredAmmoBox = objectHitByRaycast.GetComponent<AmmoBox>();
+                    hoveredAmmoBox.GetComponent<Outline>().enabled = true;
+                }
+
+
+                interactionText.gameObject.SetActive(true); 
+                interactionText.text = "Press F";
+
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    WeaponManager.Instance.PickupAmmo(hoveredAmmoBox);
+                    Destroy(objectHitByRaycast.gameObject);
                 }
             }
-        }       
+        }
+
+        if (!weaponHit && hoveredWeapon != null)
+        {
+            hoveredWeapon.GetComponent<Outline>().enabled = false;
+            hoveredWeapon = null;
+        }
+
+        if (!ammoBoxHit && hoveredAmmoBox != null)
+        {
+            hoveredAmmoBox.GetComponent<Outline>().enabled = false;
+            hoveredAmmoBox = null;
+        }
     }
 }
