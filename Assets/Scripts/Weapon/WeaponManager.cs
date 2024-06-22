@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
 
 public class WeaponManager : MonoBehaviour
 {
@@ -71,9 +67,9 @@ public class WeaponManager : MonoBehaviour
 
     private void Update()
     {
-        foreach(GameObject weaponSlot in weaponSlots)
+        foreach (GameObject weaponSlot in weaponSlots)
         {
-            if(weaponSlot == activeWeaponSlot)
+            if (weaponSlot == activeWeaponSlot)
             {
                 weaponSlot.SetActive(true);
             }
@@ -84,7 +80,7 @@ public class WeaponManager : MonoBehaviour
         }
 
 
-        if(Input.GetKeyDown(KeyCode.Alpha1)) 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SwitchActiveSlot(0);
         }
@@ -101,7 +97,7 @@ public class WeaponManager : MonoBehaviour
             forceMultiplier += Time.deltaTime;
 
 
-            if(forceMultiplier > forceMultiplierLimit)
+            if (forceMultiplier > forceMultiplierLimit)
             {
                 forceMultiplier = forceMultiplierLimit;
             }
@@ -121,7 +117,7 @@ public class WeaponManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.T))
         {
-            if(tacticalsCount > 0)
+            if (tacticalsCount > 0)
             {
                 ThrowTactical();
             }
@@ -130,12 +126,12 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    
+
 
     public void PickupWeapon(GameObject pickedupWeapon)
     {
         AddWeaponIntoActionSlot(pickedupWeapon);
-           
+
     }
 
 
@@ -147,7 +143,7 @@ public class WeaponManager : MonoBehaviour
         pickedupWeapon.transform.SetParent(activeWeaponSlot.transform, false);
 
 
-        Weapon weapon = pickedupWeapon.GetComponent<Weapon>();   
+        Weapon weapon = pickedupWeapon.GetComponent<Weapon>();
 
 
         pickedupWeapon.transform.localPosition = new Vector3(weapon.spawnPosition.x,
@@ -182,7 +178,7 @@ public class WeaponManager : MonoBehaviour
 
     private void DropCurrentWeapon(GameObject pickedupWeapon)
     {
-        if(activeWeaponSlot.transform.childCount > 0)
+        if (activeWeaponSlot.transform.childCount > 0)
         {
             var weaponToDrop = activeWeaponSlot.transform.GetChild(0).gameObject;
 
@@ -192,13 +188,13 @@ public class WeaponManager : MonoBehaviour
 
             weaponToDrop.transform.SetParent(pickedupWeapon.transform.parent);
             weaponToDrop.transform.localPosition = pickedupWeapon.transform.localPosition;
-            weaponToDrop.transform.localRotation = pickedupWeapon.transform.localRotation;  
+            weaponToDrop.transform.localRotation = pickedupWeapon.transform.localRotation;
         }
     }
 
     public void SwitchActiveSlot(int slotNumber)
     {
-        if(activeWeaponSlot.transform.childCount > 0)
+        if (activeWeaponSlot.transform.childCount > 0)
         {
             Weapon currentWeapon = activeWeaponSlot.transform.GetChild(0).GetComponent<Weapon>();
             currentWeapon.isActiveWeapon = false;
@@ -208,7 +204,7 @@ public class WeaponManager : MonoBehaviour
         activeWeaponSlot = weaponSlots[slotNumber];
 
 
-        if(activeWeaponSlot.transform.childCount > 0) 
+        if (activeWeaponSlot.transform.childCount > 0)
         {
             Weapon newWeapon = activeWeaponSlot.transform.GetChild(0).GetComponent<Weapon>();
             newWeapon.isActiveWeapon = true;
@@ -250,7 +246,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    
+
     internal void PickupThrowable(Throwable throwable)
     {
         switch (throwable.throwableType)
@@ -281,19 +277,19 @@ public class WeaponManager : MonoBehaviour
             }
             else
             {
-                print("Lethals limit reached");
+                print("Bom da full");
             }
         }
     }
 
     private void PickupThrowableAsLethal(Throwable.ThrowableType lethal)
     {
-        if(equippedLethalType == lethal || equippedLethalType == Throwable.ThrowableType.None)
+        if (equippedLethalType == lethal || equippedLethalType == Throwable.ThrowableType.None)
         {
             equippedLethalType = lethal;
 
 
-            if(lethalsCount < maxLethals)
+            if (lethalsCount < maxLethals)
             {
                 lethalsCount += 1;
                 Destroy(InteractionManager.Instance.hoveredThrowable.gameObject);
@@ -301,7 +297,7 @@ public class WeaponManager : MonoBehaviour
             }
             else
             {
-                print("Lethals limit reached");
+                print("Somke da full");
             }
         }
     }
@@ -312,7 +308,7 @@ public class WeaponManager : MonoBehaviour
         GameObject lethalPrefab = GetThrowablePrefab(equippedLethalType);
 
 
-        GameObject throwable = Instantiate(lethalPrefab, throwableSpawn.transform.position, 
+        GameObject throwable = Instantiate(lethalPrefab, throwableSpawn.transform.position,
                                                          Camera.main.transform.rotation);
         Rigidbody rb = throwable.GetComponent<Rigidbody>();
 
@@ -326,7 +322,7 @@ public class WeaponManager : MonoBehaviour
         lethalsCount -= 1;
 
 
-        if(lethalsCount <= 0)
+        if (lethalsCount <= 0)
         {
             equippedLethalType = Throwable.ThrowableType.None;
         }
@@ -378,5 +374,9 @@ public class WeaponManager : MonoBehaviour
 
 
         return new();
+
+
     }
+
+
 }

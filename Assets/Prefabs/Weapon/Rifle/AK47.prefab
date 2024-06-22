@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4417083513009588328}
   - component: {fileID: 3491566613813271494}
   - component: {fileID: 6156575446393583345}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4875,7 +4875,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7592869216370891569}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ GameObject:
   - component: {fileID: 8547371124697782019}
   - component: {fileID: 324779673357156276}
   - component: {fileID: 3798655939888885740}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: AK47
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -5006,7 +5006,7 @@ MonoBehaviour:
   shootingDelay: 0.1
   bulletPrefab: {fileID: 6444723619071279956, guid: 141d3d231c4a64946bf9b9eacbe79392, type: 3}
   bulletSpawn: {fileID: 7592869216370891569}
-  bulletVelocity: 700
+  bulletVelocity: 1000
   bulletPrefabLifeTime: 3
   bulletsPerBurst: 1
   burstBulletsLeft: 0
@@ -5018,7 +5018,10 @@ MonoBehaviour:
   magazineSize: 30
   bulletsLeft: 0
   isReloading: 0
+  scopedFOV: 15
   isADS: 0
+  mainCamera: {fileID: 0}
+  scopeOverlay: {fileID: 0}
   cameraChange: {fileID: 0}
   spawnPosition: {x: 0.58, y: 0.31, z: 0.99}
   spawnRotation: {x: 0, y: 0, z: 0}

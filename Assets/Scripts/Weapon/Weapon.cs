@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using static Weapon;
 
 public class Weapon : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class Weapon : MonoBehaviour
     public bool isShooting, readyToShoot;
     bool allowRest = true;
     public float shootingDelay = 2f;
+
 
     [Header("Thông số của đạn")]
     public GameObject bulletPrefab;
@@ -29,22 +29,31 @@ public class Weapon : MonoBehaviour
     public GameObject muzzleEffect;
     internal Animator animator;
 
+
     [Header("Thay đạn")]
     public float reloadTime;
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
+
+    [Header("Scope")]
+    public float scopedFOV = 15f;
+    private float normalFOV;
     public bool isADS;
 
 
+    public Camera mainCamera;
     public GameObject scopeOverlay;
 
 
+    [Header("Thay đổi góc nhìn")]
     public CameraChange cameraChange;
 
 
+    [Header("Spawn trên tay")]
     public Vector3 spawnPosition;
     public Vector3 spawnRotation;
+
 
     public enum WeaponModel
     {
@@ -52,9 +61,7 @@ public class Weapon : MonoBehaviour
         Sniper
     }
 
-
     public WeaponModel thisWeaponModel;
-
 
     public enum ShootingMode
     {
@@ -63,11 +70,12 @@ public class Weapon : MonoBehaviour
         Auto
     }
 
-    //[Header("Súng")]
-    //public WeaponModel model;
-
     [Header("Chế độ bắn")]
     public ShootingMode currentShootingMode;
+
+
+    private List<MeshRenderer> weaponMeshRenderers;
+
 
     private void Awake()
     {
@@ -75,12 +83,10 @@ public class Weapon : MonoBehaviour
         burstBulletsLeft = bulletsPerBurst;
         animator = GetComponent<Animator>();
 
+
+
         bulletsLeft = magazineSize;
-
-
         spreadIntensity = hipSpreadIntensity;
-
-
         scopeOverlay.SetActive(false);
 
 
@@ -88,6 +94,10 @@ public class Weapon : MonoBehaviour
         {
             cameraChange = FindObjectOfType<CameraChange>();
         }
+
+
+        // Collect all mesh renderers of the weapon
+        weaponMeshRenderers = new List<MeshRenderer>(GetComponentsInChildren<MeshRenderer>());
     }
 
     void Update()
@@ -107,14 +117,13 @@ public class Weapon : MonoBehaviour
             {
                 isShooting = Input.GetKey(KeyCode.Mouse0);
             }
-
-
             else if (currentShootingMode == ShootingMode.Single)
             {
                 isShooting = Input.GetKeyDown(KeyCode.Mouse0);
             }
 
-            // thay dạn
+
+            // Reload
             if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading && WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel) > 0)
             {
                 Debug.Log("Thay Đạn");
@@ -122,9 +131,9 @@ public class Weapon : MonoBehaviour
             }
 
 
-            // ngắm
+            // Aim
             if (Input.GetMouseButtonDown(1))
-            {              
+            {
                 switch (thisWeaponModel)
                 {
                     case WeaponModel.AK47:
@@ -134,22 +143,21 @@ public class Weapon : MonoBehaviour
                         StartCoroutine(OnScoped());
                         break;
 
-
                     default:
                         break;
                 }
             }
 
 
-            // thoát ngắm
+            // Stop Aiming
             if (Input.GetMouseButtonUp(1))
-            {                
+            {
                 switch (thisWeaponModel)
                 {
                     case WeaponModel.AK47:
                         ExitADS();
                         break;
-                    case WeaponModel.Sniper:                       
+                    case WeaponModel.Sniper:
                         OnUnscoped();
                         break;
                     default:
@@ -158,7 +166,7 @@ public class Weapon : MonoBehaviour
             }
 
 
-            // Nạp đạn tự động
+            // Auto Reload
             if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
             {
                 // Reload();
@@ -173,30 +181,33 @@ public class Weapon : MonoBehaviour
         }
     }
 
-
     private void FireWeapon()
     {
         if (isReloading) return; // Không bắn khi đang nạp đạn
 
+
         bulletsLeft--;
 
-        muzzleEffect.GetComponent<ParticleSystem>().Play();
-        
 
-        if(isADS)
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
+
+
+        if (isADS)
         {
-            animator.SetTrigger("RECOIL_ADS");           
+            animator.SetTrigger("RECOIL_ADS");
         }
         else
         {
-            animator.SetTrigger("RECOIL");           
+            animator.SetTrigger("RECOIL");
         }
 
 
         SoundManager.Instance.PlayShootingSound(thisWeaponModel);
 
+
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread();
+
 
         // Spawn đạn
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.LookRotation(shootingDirection));
@@ -209,6 +220,7 @@ public class Weapon : MonoBehaviour
         bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletVelocity, ForceMode.Impulse);
         bullet.AddComponent<Bullet>();
         StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLifeTime));
+
 
         if (allowRest)
         {
@@ -248,31 +260,45 @@ public class Weapon : MonoBehaviour
         isADS = false;
         HUDManager.Instance.middleDot.SetActive(true);
         scopeOverlay.SetActive(false);
+        SetWeaponMeshRenderersActive(true);
         spreadIntensity = hipSpreadIntensity;
+
+        mainCamera.fieldOfView = normalFOV;
     }
 
 
     IEnumerator OnScoped()
     {
-        //yield return new WaitForSeconds(.15f);
+        Debug.Log("Scoped dang bat");
+        // yield return new WaitForSeconds(.15f);
 
         animator.SetTrigger("enterADS");
         isADS = true;
         HUDManager.Instance.middleDot.SetActive(false);
         scopeOverlay.SetActive(true);
+        SetWeaponMeshRenderersActive(false);
         spreadIntensity = adsSpreadIntensity;
 
+        normalFOV = mainCamera.fieldOfView;
+        mainCamera.fieldOfView = scopedFOV;
 
+        Debug.Log($"FOV dc dat thanh {mainCamera.fieldOfView}");
         yield return null;
     }
 
+    private void SetWeaponMeshRenderersActive(bool isActive)
+    {
+        foreach (var renderer in weaponMeshRenderers)
+        {
+            renderer.enabled = isActive;
+        }
+    }
 
     private void Reload()
     {
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
         animator.SetTrigger("RELOAD");
-
 
         SoundManager.Instance.PlayReloadSound(thisWeaponModel);
     }
@@ -289,7 +315,6 @@ public class Weapon : MonoBehaviour
             bulletsLeft = WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel);
             WeaponManager.Instance.DescreaseTotalAmmo(bulletsLeft, thisWeaponModel);
         }
-
 
         isReloading = false;
     }
@@ -321,7 +346,6 @@ public class Weapon : MonoBehaviour
         direction.x += UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
         direction.y += UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
 
-
         return direction.normalized;
     }
 
@@ -329,6 +353,5 @@ public class Weapon : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Destroy(bullet, 10f);
-        
     }
 }

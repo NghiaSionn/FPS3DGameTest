@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class CarEnterExitSystem : MonoBehaviour
@@ -20,9 +19,8 @@ public class CarEnterExitSystem : MonoBehaviour
     public WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
     public WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
 
-    bool isADS;
     bool Candrive;
-    bool isDriving; 
+    bool isDriving;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +33,18 @@ public class CarEnterExitSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Weapon activeWeapon = WeaponManager.Instance?.activeWeaponSlot?.GetComponentInChildren<Weapon>();
+
+        // Prevent driving if the player is aiming
+        if (activeWeapon != null && activeWeapon.isADS)
+        {
+            DriveUi.gameObject.SetActive(false);
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Candrive && !isDriving ) // người chơi có thể lái và chưa ở trong xe
+            if (Candrive && !isDriving)  // người chơi có thể lái và chưa ở trong xe
             {
                 EnterCar();
             }
@@ -100,7 +107,9 @@ public class CarEnterExitSystem : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Player")
+        Weapon activeWeapon = WeaponManager.Instance?.activeWeaponSlot?.GetComponentInChildren<Weapon>();
+
+        if (col.gameObject.tag == "Player" && (activeWeapon == null || !activeWeapon.isADS))
         {
             DriveUi.gameObject.SetActive(true);
             Candrive = true;

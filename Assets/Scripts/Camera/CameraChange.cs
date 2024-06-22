@@ -8,26 +8,25 @@ public class CameraChange : MonoBehaviour
     public GameObject thirdCam;
     public GameObject firstCam;
     public int camMode;
-    public Weapon weapon;  
+ 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        // Optionally, find the Weapon script if not set in the inspector
-        if (weapon == null)
-        {
-            weapon = FindObjectOfType<Weapon>();
-        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Weapon activeWeapon = WeaponManager.Instance?.activeWeaponSlot?.GetComponentInChildren<Weapon>();
+
+
         if (Input.GetKeyDown(KeyCode.V))
         {
             // Check if not scoped before changing camera
-            if (!weapon.isADS)
+            if (!activeWeapon.isADS)
             {
                 
                 if (camMode == 1)
