@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
-{  
+{
+    public int bulletDamage;
+
 
     private void OnCollisionEnter(Collision objectWeHit)
     {
@@ -23,13 +25,30 @@ public class Bullet : MonoBehaviour
         }
 
 
+        if (objectWeHit.gameObject.CompareTag("Plane"))
+        {
+            Debug.Log("Bắn vào đất");
+            CreateBulletImpactEffect(objectWeHit);
+            Destroy(gameObject);
+        }
+
+
         if (objectWeHit.gameObject.CompareTag("Bear"))
         {
-            Debug.Log("Bắn vào chai");
-          
+            Debug.Log("Bắn vào chai");      
+            
             objectWeHit.gameObject.GetComponent<BearBottle>().Shatter();
             Destroy(gameObject);
 
+        }
+
+
+        if (objectWeHit.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Bắn vào thây ma");
+            objectWeHit.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
+
+            Destroy(gameObject);
         }
     }
 

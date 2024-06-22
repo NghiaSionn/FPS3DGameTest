@@ -8,6 +8,10 @@ TagManager:
   - Wall
   - Bear
   - Weapon
+  - Zombie
+  - Enemy
+  - Plane
+  - Waypoints
   layers:
   - Default
   - TransparentFX

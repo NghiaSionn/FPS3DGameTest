@@ -7,6 +7,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public bool isActiveWeapon;
+    public int weaponDamage;
 
 
     public bool isShooting, readyToShoot;
@@ -169,7 +170,14 @@ public class Weapon : MonoBehaviour
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread();
 
+        // Spawn đạn
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.LookRotation(shootingDirection));
+
+
+        Bullet bul = bullet.GetComponent<Bullet>();
+        bul.bulletDamage = weaponDamage;
+
+
         bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletVelocity, ForceMode.Impulse);
         bullet.AddComponent<Bullet>();
         StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLifeTime));
