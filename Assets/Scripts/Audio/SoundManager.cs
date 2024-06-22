@@ -19,9 +19,13 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource reloadSoundAK48;
     public AudioSource reloadSniper;
+
+
     public AudioSource emtyshooting;
 
-   
+
+    public AudioSource throwablesChannel;
+    public AudioClip grenadeSound;
 
 
     private void Awake()

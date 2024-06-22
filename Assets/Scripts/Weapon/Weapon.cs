@@ -21,6 +21,9 @@ public class Weapon : MonoBehaviour
     public int bulletsPerBurst = 3;
     public int burstBulletsLeft;
     public float spreadIntensity;
+    public float hipSpreadIntensity;
+    public float adsSpreadIntensity;
+
 
     public GameObject muzzleEffect;
     internal Animator animator;
@@ -30,7 +33,7 @@ public class Weapon : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
-    public bool isScoped = false;
+    public bool isADS;
 
 
     public CameraChange cameraChange;
@@ -70,7 +73,10 @@ public class Weapon : MonoBehaviour
 
         bulletsLeft = magazineSize;
 
-      
+
+        spreadIntensity = hipSpreadIntensity;
+
+
         if (cameraChange == null)
         {
             cameraChange = FindObjectOfType<CameraChange>();
@@ -110,42 +116,18 @@ public class Weapon : MonoBehaviour
 
 
             // ngắm
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetMouseButtonDown(1))
             {
-                isScoped = !isScoped;
-                if (Camera.main.fieldOfView == 30f)
-                {
-                    if (cameraChange.camMode == 1)
-                    {
-                        Camera.main.fieldOfView = 60f;
-                        animator.SetBool("STARE", isScoped);
-                    }
-                }
-
-
-                else if (Camera.main.fieldOfView == 40f)
-                {
-                    if (cameraChange.camMode == 0)
-                    {
-                        Camera.main.fieldOfView = 60f;
-                    }
-                }
-
-
-                else
-                {
-                    if (cameraChange.camMode == 1)
-                    {
-                        Camera.main.fieldOfView = 30f;
-                        animator.SetBool("STARE", isScoped);
-                    }
-                    else
-                    {
-                        Camera.main.fieldOfView = 40f;
-                    }
-                }
-
+                EnterADS();
             }
+
+
+            // thoát ngắm
+            if (Input.GetMouseButtonUp(1))
+            {
+                ExitADS();
+            }
+
 
             // Nạp đạn tự động
             if (readyToShoot && !isShooting && !isReloading && bulletsLeft <= 0)
@@ -153,16 +135,12 @@ public class Weapon : MonoBehaviour
                 // Reload();
             }
 
+
             if (readyToShoot && isShooting && bulletsLeft > 0 && !isReloading)
             {
                 burstBulletsLeft = bulletsPerBurst;
                 FireWeapon();
             }
-
-            //if (AmmoManager.Instance.ammoDisplay != null)
-            //{
-            //    AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft / bulletsPerBurst} / {magazineSize / bulletsPerBurst}";
-            //} 
         }
     }
 
@@ -174,9 +152,16 @@ public class Weapon : MonoBehaviour
         bulletsLeft--;
 
         muzzleEffect.GetComponent<ParticleSystem>().Play();
-        animator.SetTrigger("RECOIL");
+        
 
-        //SoundManager.Instance.shootingSoundAK47.Play();
+        if(isADS)
+        {
+            animator.SetTrigger("RECOIL_ADS");           
+        }
+        else
+        {
+            animator.SetTrigger("RECOIL");           
+        }
 
 
         SoundManager.Instance.PlayShootingSound(thisWeaponModel);
@@ -202,12 +187,30 @@ public class Weapon : MonoBehaviour
         }
     }
 
+
+    private void EnterADS()
+    {
+        animator.SetTrigger("enterADS");
+        isADS = true;
+        HUDManager.Instance.middleDot.SetActive(false);
+        spreadIntensity = adsSpreadIntensity;
+    }
+
+
+    private void ExitADS()
+    {
+        animator.SetTrigger("exitADS");
+        isADS = false;
+        HUDManager.Instance.middleDot.SetActive(true);
+        spreadIntensity = hipSpreadIntensity;
+    }
+
+
     private void Reload()
     {
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
         animator.SetTrigger("RELOAD");
-        //SoundManager.Instance.reloadSoundAK48.Play();
 
 
         SoundManager.Instance.PlayReloadSound(thisWeaponModel);
@@ -253,8 +256,10 @@ public class Weapon : MonoBehaviour
 
         Vector3 direction = targetPoint - bulletSpawn.position;
 
+        // Thêm độ lệch vào hướng bắn
         direction.x += UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
         direction.y += UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
+
 
         return direction.normalized;
     }

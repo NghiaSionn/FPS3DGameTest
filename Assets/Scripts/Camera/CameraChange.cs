@@ -27,7 +27,7 @@ public class CameraChange : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
         {
             // Check if not scoped before changing camera
-            if (!weapon.isScoped)
+            if (!weapon.isADS)
             {
                 
                 if (camMode == 1)

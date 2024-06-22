@@ -4847,7 +4847,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.47, y: -0.143, z: 0.654}
-  m_LocalScale: {x: 0.6403, y: 0.5335833, z: 0.55104214}
+  m_LocalScale: {x: 0.6403001, y: 0.5335832, z: 0.5510425}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7592869216370891569}
@@ -4925,13 +4925,15 @@ MonoBehaviour:
   bulletPrefabLifeTime: 3
   bulletsPerBurst: 1
   burstBulletsLeft: 0
-  spreadIntensity: 0.2
+  spreadIntensity: 0
+  hipSpreadIntensity: 0.4
+  adsSpreadIntensity: 0.04
   muzzleEffect: {fileID: 4493690213212656055}
   reloadTime: 1.5
   magazineSize: 30
   bulletsLeft: 0
   isReloading: 0
-  isScoped: 0
+  isADS: 0
   cameraChange: {fileID: 0}
   spawnPosition: {x: 0.58, y: 0.31, z: 0.99}
   spawnRotation: {x: 0, y: 0, z: 0}

@@ -9,6 +9,7 @@ public class InteractionManager : MonoBehaviour
 
     public Weapon hoveredWeapon = null;
     public AmmoBox hoveredAmmoBox = null;
+    public Throwable hoveredThrowable = null;
 
 
     public TextMeshProUGUI interactionText;
@@ -35,6 +36,7 @@ public class InteractionManager : MonoBehaviour
 
         bool weaponHit = false;
         bool ammoBoxHit = false;
+        bool throwableHit = false;
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -90,7 +92,37 @@ public class InteractionManager : MonoBehaviour
                     Destroy(objectHitByRaycast.gameObject);
                 }
             }
+
+
+            // Throwable
+            if (objectHitByRaycast.GetComponent<Throwable>())
+            {
+                throwableHit = true;
+                if (hoveredThrowable != objectHitByRaycast.GetComponent<Throwable>())
+                {
+                    if (hoveredThrowable != null)
+                    {
+                        hoveredThrowable.GetComponent<Outline>().enabled = false;
+                    }
+
+
+                    hoveredThrowable = objectHitByRaycast.GetComponent<Throwable>();
+                    hoveredThrowable.GetComponent<Outline>().enabled = true;
+                }
+
+
+                interactionText.gameObject.SetActive(true);
+                interactionText.text = "Press F";
+
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    WeaponManager.Instance.PickupThrowable(hoveredThrowable);
+
+                }
+            }
         }
+
 
         if (!weaponHit && hoveredWeapon != null)
         {
@@ -98,10 +130,18 @@ public class InteractionManager : MonoBehaviour
             hoveredWeapon = null;
         }
 
+
         if (!ammoBoxHit && hoveredAmmoBox != null)
         {
             hoveredAmmoBox.GetComponent<Outline>().enabled = false;
             hoveredAmmoBox = null;
+        }
+
+
+        if (!throwableHit && hoveredThrowable != null)
+        {
+            hoveredThrowable.GetComponent<Outline>().enabled = false;
+            hoveredThrowable = null;
         }
     }
 }

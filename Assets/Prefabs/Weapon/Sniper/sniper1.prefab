@@ -111,12 +111,14 @@ MonoBehaviour:
   bulletsPerBurst: 1
   burstBulletsLeft: 0
   spreadIntensity: 0
+  hipSpreadIntensity: 1
+  adsSpreadIntensity: 0
   muzzleEffect: {fileID: 2192926379748263894}
   reloadTime: 1.5
   magazineSize: 5
   bulletsLeft: 0
   isReloading: 0
-  isScoped: 0
+  isADS: 0
   cameraChange: {fileID: 0}
   spawnPosition: {x: 0.51, y: 0.41, z: 1.22}
   spawnRotation: {x: 0, y: 0, z: 0}
