@@ -37,6 +37,9 @@ public class Weapon : MonoBehaviour
     public bool isADS;
 
 
+    public GameObject scopeOverlay;
+
+
     public CameraChange cameraChange;
 
 
@@ -78,6 +81,9 @@ public class Weapon : MonoBehaviour
         spreadIntensity = hipSpreadIntensity;
 
 
+        scopeOverlay.SetActive(false);
+
+
         if (cameraChange == null)
         {
             cameraChange = FindObjectOfType<CameraChange>();
@@ -108,7 +114,7 @@ public class Weapon : MonoBehaviour
                 isShooting = Input.GetKeyDown(KeyCode.Mouse0);
             }
 
-
+            // thay dạn
             if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading && WeaponManager.Instance.CheckAmmoLeftFor(thisWeaponModel) > 0)
             {
                 Debug.Log("Thay Đạn");
@@ -118,15 +124,37 @@ public class Weapon : MonoBehaviour
 
             // ngắm
             if (Input.GetMouseButtonDown(1))
-            {
-                EnterADS();
+            {              
+                switch (thisWeaponModel)
+                {
+                    case WeaponModel.AK47:
+                        EnterADS();
+                        break;
+                    case WeaponModel.Sniper:
+                        StartCoroutine(OnScoped());
+                        break;
+
+
+                    default:
+                        break;
+                }
             }
 
 
             // thoát ngắm
             if (Input.GetMouseButtonUp(1))
-            {
-                ExitADS();
+            {                
+                switch (thisWeaponModel)
+                {
+                    case WeaponModel.AK47:
+                        ExitADS();
+                        break;
+                    case WeaponModel.Sniper:                       
+                        OnUnscoped();
+                        break;
+                    default:
+                        break;
+                }
             }
 
 
@@ -211,6 +239,31 @@ public class Weapon : MonoBehaviour
         isADS = false;
         HUDManager.Instance.middleDot.SetActive(true);
         spreadIntensity = hipSpreadIntensity;
+    }
+
+
+    private void OnUnscoped()
+    {
+        animator.SetTrigger("exitADS");
+        isADS = false;
+        HUDManager.Instance.middleDot.SetActive(true);
+        scopeOverlay.SetActive(false);
+        spreadIntensity = hipSpreadIntensity;
+    }
+
+
+    IEnumerator OnScoped()
+    {
+        //yield return new WaitForSeconds(.15f);
+
+        animator.SetTrigger("enterADS");
+        isADS = true;
+        HUDManager.Instance.middleDot.SetActive(false);
+        scopeOverlay.SetActive(true);
+        spreadIntensity = adsSpreadIntensity;
+
+
+        yield return null;
     }
 
 

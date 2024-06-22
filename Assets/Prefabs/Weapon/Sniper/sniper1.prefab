@@ -112,7 +112,7 @@ MonoBehaviour:
   bulletsPerBurst: 1
   burstBulletsLeft: 0
   spreadIntensity: 0
-  hipSpreadIntensity: 1
+  hipSpreadIntensity: 2
   adsSpreadIntensity: 0
   muzzleEffect: {fileID: 2192926379748263894}
   reloadTime: 1.5

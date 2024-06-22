@@ -20,6 +20,7 @@ public class CarEnterExitSystem : MonoBehaviour
     public WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
     public WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
 
+    bool isADS;
     bool Candrive;
     bool isDriving; 
 
