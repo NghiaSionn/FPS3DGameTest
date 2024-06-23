@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,10 +47,33 @@ public class Bullet : MonoBehaviour
         if (objectWeHit.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Bắn vào thây ma");
-            objectWeHit.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
 
+
+            if(objectWeHit.gameObject.GetComponent<Enemy>().isDead == false)
+            {
+                objectWeHit.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
+            }
+            
+
+            CreateBloodSprayEffect(objectWeHit);
             Destroy(gameObject);
         }
+    }
+
+    private void CreateBloodSprayEffect(Collision objectWeHit)
+    {
+        ContactPoint contact = objectWeHit.contacts[0];
+
+        GameObject bloodSprayPrefab = Instantiate(
+            GlobalRefernces.Instance.bloodSprayEffect,
+            contact.point,
+            Quaternion.LookRotation(contact.normal)
+            );
+
+        bloodSprayPrefab.transform.SetParent(objectWeHit.gameObject.transform);
+
+
+        Destroy(bloodSprayPrefab, 10f);
     }
 
 

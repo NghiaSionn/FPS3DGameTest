@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -28,6 +28,13 @@ public class ZombieChaseState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // âm thanh khi zombie ở trạng thái chase
+        if (SoundManager.Instance.zombieChannel.isPlaying == false)
+        {
+            SoundManager.Instance.zombieChannel.PlayOneShot(SoundManager.Instance.zombieChase);
+        }
+
+
         agent.SetDestination(player.position);
         animator.transform.LookAt(player);
 
@@ -39,9 +46,11 @@ public class ZombieChaseState : StateMachineBehaviour
         {
             animator.SetBool("isChasing", false);
         }
-        else
+
+
+        if(distanceFromPlayer < attackingDistane)
         {
-            animator.SetBool("isChasing", true);
+            animator.SetBool("isAttacking", true);
         }
     }
 
@@ -49,5 +58,9 @@ public class ZombieChaseState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent.SetDestination(animator.transform.position);
+
+
+        // dừng âm thanh
+        SoundManager.Instance.zombieChannel.Stop();
     }
 }

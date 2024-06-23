@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Plane
   - Waypoints
+  - ZombieHand
   layers:
   - Default
   - TransparentFX

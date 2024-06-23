@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
 
 
     private NavMeshAgent navAgent;
+
+
+    public bool isDead;
 
 
     // Start is called before the first frame update
@@ -36,11 +39,20 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("DIE2");
             }
+
+
+            isDead = true;
+
+            //Âm thanh chết
+            SoundManager.Instance.zombieChannel2.PlayOneShot(SoundManager.Instance.zombieDeath);
         }
         else
         {
             animator.SetTrigger("DAMAGE");
-        }
+
+            //Âm thanh khi nhận dame
+            SoundManager.Instance.zombieChannel2.PlayOneShot(SoundManager.Instance.zombieHurt);
+        }      
     }
 
 
@@ -50,11 +62,11 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 2.5f); //Attacking - Stop Attacking
 
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, 18f); //Detection (Start Cahsing)
 
 
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, 21f); //Stop chasing
     }
 

@@ -12,7 +12,7 @@ public class GlobalRefernces : MonoBehaviour
 
     public GameObject grenadeExplosionEffect;
     public GameObject smokeGrenadeEffect;
-
+    public GameObject bloodSprayEffect;
 
     private void Awake()
     {

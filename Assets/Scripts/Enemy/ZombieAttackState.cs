@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +23,14 @@ public class ZombieAttackState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // âm thanh khi zombie tấn công
+        if (SoundManager.Instance.zombieChannel.isPlaying == false)
+        {
+            SoundManager.Instance.zombieChannel.PlayOneShot(SoundManager.Instance.zombieAttack);
+
+        }
+
+
         LookAtPlayer();
 
 
@@ -36,6 +44,13 @@ public class ZombieAttackState : StateMachineBehaviour
     }
 
 
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // dừng âm thanh
+        SoundManager.Instance.zombieChannel.Stop();
+    }
+
+
     private void LookAtPlayer()
     {
         Vector3 direction = player.position - agent.transform.position;
@@ -43,6 +58,6 @@ public class ZombieAttackState : StateMachineBehaviour
 
 
         var yRotation = agent.transform.eulerAngles.y;
-        agent.transform.rotation = Quaternion.Euler(0, yRotation, 0);   
+        agent.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }
