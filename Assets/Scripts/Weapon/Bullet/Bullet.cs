@@ -52,13 +52,37 @@ public class Bullet : MonoBehaviour
             if(objectWeHit.gameObject.GetComponent<Enemy>().isDead == false)
             {
                 objectWeHit.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
+                CreateBloodSprayEffect(objectWeHit);
             }
             
+            
+            if (objectWeHit.gameObject.GetComponent<Enemy>().isDead == true)
+            {
+                CreateBloodDeadEffect(objectWeHit);
+            }
+                      
 
-            CreateBloodSprayEffect(objectWeHit);
             Destroy(gameObject);
         }
     }
+
+
+    private void CreateBloodDeadEffect(Collision objectWeHit)
+    {
+        ContactPoint contact = objectWeHit.contacts[0];
+
+        GameObject bloodDeadPrefab = Instantiate(
+            GlobalRefernces.Instance.bloodDeadEffect,
+            contact.point,
+            Quaternion.LookRotation(contact.normal)
+            );
+
+        bloodDeadPrefab.transform.SetParent(objectWeHit.gameObject.transform);
+
+
+        Destroy(bloodDeadPrefab,2f);
+    }
+
 
     private void CreateBloodSprayEffect(Collision objectWeHit)
     {
@@ -73,7 +97,7 @@ public class Bullet : MonoBehaviour
         bloodSprayPrefab.transform.SetParent(objectWeHit.gameObject.transform);
 
 
-        Destroy(bloodSprayPrefab, 10f);
+        Destroy(bloodSprayPrefab, 3f);
     }
 
 
@@ -92,4 +116,6 @@ public class Bullet : MonoBehaviour
 
         Destroy(hole,5f);
     }
+
+
 }

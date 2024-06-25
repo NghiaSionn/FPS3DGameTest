@@ -33,11 +33,14 @@ public class Enemy : MonoBehaviour
 
             if (randomValue == 0)
             {
+                
                 animator.SetTrigger("DIE1");
+                //Destroy(gameObject, 4f);
             }
             else
             {
                 animator.SetTrigger("DIE2");
+                //Destroy(gameObject, 4f);
             }
 
 
@@ -63,11 +66,13 @@ public class Enemy : MonoBehaviour
 
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, 18f); //Detection (Start Cahsing)
+        Gizmos.DrawWireSphere(transform.position, 100f); //Detection (Start Cahsing)
 
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, 21f); //Stop chasing
+        Gizmos.DrawWireSphere(transform.position, 101f); //Stop chasing
     }
 
+
+    
 }

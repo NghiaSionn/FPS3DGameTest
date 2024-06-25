@@ -5,6 +5,8 @@ using UnityEngine;
 public class Lean : MonoBehaviour
 {
     public Animator cameraAnim;
+
+
     public LayerMask layers;
     RaycastHit hit;
 
@@ -17,6 +19,7 @@ public class Lean : MonoBehaviour
             cameraAnim.ResetTrigger("idle");
             cameraAnim.ResetTrigger("right");
             cameraAnim.SetTrigger("left");
+
         }
 
 
@@ -26,6 +29,7 @@ public class Lean : MonoBehaviour
             cameraAnim.ResetTrigger("idle");
             cameraAnim.ResetTrigger("left");
             cameraAnim.SetTrigger("right");
+
         }
 
 
@@ -34,6 +38,7 @@ public class Lean : MonoBehaviour
             cameraAnim.ResetTrigger("left");
             cameraAnim.ResetTrigger("right");
             cameraAnim.SetTrigger("idle");
+
         }
     }
 }

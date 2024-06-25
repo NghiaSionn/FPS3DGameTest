@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleTime: 4
-  detectionAreaRadius: 18
+  detectionAreaRadius: 100
 --- !u!114 &3353862778306007324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolingTime: 10
-  detectionArea: 18
+  detectionArea: 100
   patrolSpeed: 1.5
 --- !u!1101 &3415864277379081550
 AnimatorStateTransition:
@@ -622,5 +622,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 6
-  stopChasingDistance: 21
+  stopChasingDistance: 101
   attackingDistane: 2.5

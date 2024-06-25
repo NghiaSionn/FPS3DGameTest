@@ -44,6 +44,7 @@ public class Weapon : MonoBehaviour
 
     public Camera mainCamera;
     public GameObject scopeOverlay;
+    public ProceduralRecoil recoil;
 
 
     [Header("Thay đổi góc nhìn")]
@@ -94,6 +95,9 @@ public class Weapon : MonoBehaviour
         {
             cameraChange = FindObjectOfType<CameraChange>();
         }
+
+
+        //recoil = mainCamera.GetComponent<ProceduralRecoil>();
 
 
         // Collect all mesh renderers of the weapon
@@ -213,6 +217,9 @@ public class Weapon : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.LookRotation(shootingDirection));
 
 
+        //recoil.recoil();
+
+
         Bullet bul = bullet.GetComponent<Bullet>();
         bul.bulletDamage = weaponDamage;
 
@@ -234,6 +241,9 @@ public class Weapon : MonoBehaviour
             Invoke("FireWeapon", shootingDelay);
         }
     }
+
+
+  
 
 
     private void EnterADS()
@@ -294,11 +304,20 @@ public class Weapon : MonoBehaviour
         }
     }
 
+
     private void Reload()
     {
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
-        animator.SetTrigger("RELOAD");
+        if (isADS)
+        {
+            animator.SetTrigger("RELOAD_ADS");
+        }
+        else
+        {
+            animator.SetTrigger("RELOAD");
+        }
+
 
         SoundManager.Instance.PlayReloadSound(thisWeaponModel);
     }
