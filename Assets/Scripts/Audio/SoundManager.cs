@@ -41,6 +41,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource playerChannel;
 
 
+    public AudioClip playerPickUpWP;
+    public AudioClip playerPickUpIT;
     public AudioClip playerHurt;
     public AudioClip playerDeath;
     public AudioClip deathMusic;

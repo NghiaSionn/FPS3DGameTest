@@ -130,8 +130,10 @@ public class WeaponManager : MonoBehaviour
 
     public void PickupWeapon(GameObject pickedupWeapon)
     {
-        AddWeaponIntoActionSlot(pickedupWeapon);
+        SoundManager.Instance.playerChannel.PlayOneShot(SoundManager.Instance.playerPickUpWP);
 
+
+        AddWeaponIntoActionSlot(pickedupWeapon);
     }
 
 
@@ -160,6 +162,9 @@ public class WeaponManager : MonoBehaviour
 
     internal void PickupAmmo(AmmoBox ammo)
     {
+        SoundManager.Instance.playerChannel.PlayOneShot(SoundManager.Instance.playerPickUpIT);
+
+
         switch (ammo.ammoType)
         {
             case AmmoBox.AmmoType.RifleAmmo:
@@ -249,6 +254,9 @@ public class WeaponManager : MonoBehaviour
 
     internal void PickupThrowable(Throwable throwable)
     {
+        SoundManager.Instance.playerChannel.PlayOneShot(SoundManager.Instance.playerPickUpIT);
+
+
         switch (throwable.throwableType)
         {
             case Throwable.ThrowableType.Grenade:

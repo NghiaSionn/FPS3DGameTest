@@ -117,6 +117,12 @@ public class Throwable : MonoBehaviour
             }
 
 
+            if (objectInRange.gameObject.CompareTag("Player"))
+            {
+                objectInRange.gameObject.GetComponent<Player>().TakeDamage(75);
+            }
+
+
             if (objectInRange.gameObject.CompareTag("Bear"))
             {
                 objectInRange.gameObject.GetComponent<BearBottle>().Shatter();

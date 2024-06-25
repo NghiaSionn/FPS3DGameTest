@@ -44,7 +44,7 @@ public class Weapon : MonoBehaviour
 
     public Camera mainCamera;
     public GameObject scopeOverlay;
-    public ProceduralRecoil recoil;
+    //public ProceduralRecoil recoil;
 
 
     [Header("Thay đổi góc nhìn")]
@@ -135,7 +135,7 @@ public class Weapon : MonoBehaviour
             }
 
 
-            // Aim
+            // ngắm
             if (Input.GetMouseButtonDown(1))
             {
                 switch (thisWeaponModel)
@@ -153,7 +153,7 @@ public class Weapon : MonoBehaviour
             }
 
 
-            // Stop Aiming
+            // bỏ ngắm
             if (Input.GetMouseButtonUp(1))
             {
                 switch (thisWeaponModel)
@@ -220,6 +220,7 @@ public class Weapon : MonoBehaviour
         //recoil.recoil();
 
 
+        // gây damage 
         Bullet bul = bullet.GetComponent<Bullet>();
         bul.bulletDamage = weaponDamage;
 
@@ -280,7 +281,7 @@ public class Weapon : MonoBehaviour
     IEnumerator OnScoped()
     {
         Debug.Log("Scoped dang bat");
-        // yield return new WaitForSeconds(.15f);
+
 
         animator.SetTrigger("enterADS");
         isADS = true;

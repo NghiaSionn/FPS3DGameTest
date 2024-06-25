@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "794386816169",
+    "firebase_url": "https://fpsgametest3d-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fpsgametest3d",
+    "storage_bucket": "fpsgametest3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794386816169:android:6bd5acfe220d815834ddb8",
+        "android_client_info": {
+          "package_name": "game.fps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC8qb6r0XdEsaOdOSl7vn7OlKizGS3H5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
