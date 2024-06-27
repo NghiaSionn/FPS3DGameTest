@@ -776,6 +776,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175947790}
   m_CullTransparentMesh: 1
+--- !u!146 &178576763 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 1036075304438550854, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+  m_PrefabInstance: {fileID: 1205645985088080156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &179243914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1169,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223666848}
   m_CullTransparentMesh: 1
+--- !u!146 &232175202 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 3415312194776304469, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+  m_PrefabInstance: {fileID: 1205645985088080156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &233873034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,7 +2920,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e67d8216b5d806545968ecd9489c4de6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: eb4352a8413442e4cad7f3f41c965a07, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3395,6 +3405,11 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7383697674440965373, guid: 992f767dc2787c24d834f82d6cd7a466, type: 3}
   m_PrefabInstance: {fileID: 314723321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!146 &664973185 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 2813036044131802047, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+  m_PrefabInstance: {fileID: 1205645985088080156}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &682107358
 GameObject:
@@ -4260,8 +4275,8 @@ MonoBehaviour:
   carEngineFast: {fileID: 563321801}
   carAlarm: {fileID: 1506246651}
   carExplosion: {fileID: 1006391100}
-  carBegin: {fileID: 8300000, guid: ae74f51161d469e4082f769c8281d0a3, type: 3}
-  carHorn: {fileID: 8300000, guid: e891ecd58946e8141b8073198ab60c66, type: 3}
+  carBegin: {fileID: 8300000, guid: ca5daa8fb3a25e448b5b867670659de8, type: 3}
+  carHorn: {fileID: 8300000, guid: 1463ac0f916d1bb4791adb478e95c867, type: 3}
 --- !u!4 &934728206
 Transform:
   m_ObjectHideFlags: 0
@@ -4907,25 +4922,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992718133}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &996819771 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8346918678398187967, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
-  m_PrefabInstance: {fileID: 1205645985088080156}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &996819778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996819771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4f66cde02a57374cabf97b134842e8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 150
-  isDead: 0
 --- !u!1 &1002939538
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,7 +5092,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9a6c77aa009225b47b61830387de14c4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 40d24d03f1dc46540ac574db102f7e31, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6950,6 +6946,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a4ec29fd41463844aea27a363230f55, type: 3}
+--- !u!146 &1313841715 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 4894759547236603241, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+  m_PrefabInstance: {fileID: 1205645985088080156}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1328854216
 GameObject:
   m_ObjectHideFlags: 0
@@ -8614,7 +8615,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5c08dea302fb61240afcd28df1031721, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 55c8de7ff1b8d084b8e2ad0d1e5e1b02, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -10813,7 +10814,7 @@ MonoBehaviour:
   smokeGrenadeEffect: {fileID: 100000, guid: 4ecfa3d3919108f4fbff80d1c4d920a1, type: 3}
   bloodSprayEffect: {fileID: 1962516439210982, guid: 3c657dedc43d33a4987fbf09e6363067, type: 3}
   bloodDeadEffect: {fileID: 1051680736832641835, guid: 48e6cea55ac99814089196fe0b59e546, type: 3}
-  carExplosionEffect: {fileID: 3599477558880475613, guid: 3b5658587a3040841844078cbe9f0300, type: 3}
+  carExplosionEffect: {fileID: 100002, guid: 6ecf76dc4f268d340b2666896a954bcc, type: 3}
 --- !u!4 &1920022162
 Transform:
   m_ObjectHideFlags: 0
@@ -12106,6 +12107,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6233349856232478595, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+      propertyPath: HP
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233349856232478595, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+      propertyPath: rearLeftWheelCollider
+      value: 
+      objectReference: {fileID: 664973185}
+    - target: {fileID: 6233349856232478595, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+      propertyPath: frontLeftWheelCollider
+      value: 
+      objectReference: {fileID: 232175202}
+    - target: {fileID: 6233349856232478595, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+      propertyPath: rearRightWheelCollider
+      value: 
+      objectReference: {fileID: 178576763}
+    - target: {fileID: 6233349856232478595, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
+      propertyPath: frontRightWheelCollider
+      value: 
+      objectReference: {fileID: 1313841715}
     - target: {fileID: 6625817194810827346, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
       propertyPath: ammo
       value: 
@@ -12153,10 +12174,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8346918678398187967, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 996819778}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15036c400f1451f41b6c4a83b6a86f46, type: 3}
 --- !u!1001 &1453809339232738995
 PrefabInstance:

@@ -138,17 +138,20 @@ public class Bullet : MonoBehaviour
 
     public void CreateCarExplosionEffect(Collision objectWeHit)
     {
-        ContactPoint contact = objectWeHit.contacts[0];
+        // Kiểm tra nếu có điểm tiếp xúc
+        if (objectWeHit.contacts.Length > 0)
+        {
+            ContactPoint contact = objectWeHit.contacts[0];
 
-        GameObject carExplosionPrefabs = Instantiate(
-            GlobalRefernces.Instance.carExplosionEffect,
-            contact.point,
-            Quaternion.LookRotation(contact.normal)
+
+            GameObject carExplosionPrefab = Instantiate(
+                GlobalRefernces.Instance.carExplosionEffect,
+                contact.point,
+                Quaternion.LookRotation(contact.normal)
             );
 
-        carExplosionPrefabs.transform.SetParent(objectWeHit.gameObject.transform);
 
-
-        Destroy(carExplosionPrefabs, 5f);
+            Destroy(carExplosionPrefab, 5f);
+        }
     }
 }

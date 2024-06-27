@@ -1,22 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Car : MonoBehaviour
 {
     [SerializeField] private int HP = 100;
-
     public bool isDead;
+    private Rigidbody carRigidbody;
 
+    private Vector3 lastHitDirection; // Biến tạm để lưu hướng của lực tác động
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        carRigidbody = GetComponent<Rigidbody>();
     }
-
 
     public void TakeDamage(int damageAmount)
     {
@@ -24,25 +19,28 @@ public class Car : MonoBehaviour
         if (HP <= 0)
         {
             isDead = true;
-            //Âm thanh chết
+            // Âm thanh chết
             SoundManager.Instance.carExplosion.Play();
             SoundManager.Instance.carAlarm.Stop();
 
-            
-            Destroy(gameObject);
-            
+            Destroy(gameObject); // Phá hủy xe sau 2 giây để âm thanh phát xong
         }
         else
         {
-            //Âm thanh khi nhận dame
+            // Âm thanh khi nhận sát thương
             if (!SoundManager.Instance.carAlarm.isPlaying)
             {
                 SoundManager.Instance.carAlarm.Play();
             }
+
+            // Áp dụng một lực nhỏ để xe bị nhích nhẹ
+            carRigidbody.AddForce(-lastHitDirection * 5f, ForceMode.Impulse);
         }
     }
 
 
-    
-
+    public void SetHitDirection(Vector3 direction)
+    {
+        lastHitDirection = direction;
+    }
 }

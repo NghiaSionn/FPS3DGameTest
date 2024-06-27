@@ -130,4 +130,20 @@ public class Throwable : MonoBehaviour
             }
         }
     }
+
+    public void CreateCarExplosionEffect()
+    {
+        GameObject carexplosionEffect = GlobalRefernces.Instance.carExplosionEffect;
+        Instantiate(carexplosionEffect, transform.position, transform.rotation);
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, damageRaidus);
+        foreach (Collider objectInRange in colliders)
+        {
+            Rigidbody rb = objectInRange.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                
+            }
+        }
+    }
 }
