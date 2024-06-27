@@ -52,8 +52,12 @@ public class SoundManager : MonoBehaviour
     public AudioSource carEngine;
     public AudioSource carBreake;
     public AudioSource carEngineFast;
+    public AudioSource carAlarm;
+    public AudioSource carExplosion;
 
     public AudioClip carBegin;
+    public AudioClip carHorn;
+    
 
     private void Awake()
     {

@@ -11,6 +11,7 @@ public class CarEnterExitSystem : MonoBehaviour
     public Transform Car;
     public Transform Player;
 
+
     public GameObject PlayerCam;
     public GameObject CarCam;
 
@@ -32,6 +33,7 @@ public class CarEnterExitSystem : MonoBehaviour
     {
         CarController.enabled = false;
         Interaction.enabled = true;
+        
 
         DriveUi.gameObject.SetActive(false);
         isDriving = false;
@@ -67,6 +69,7 @@ public class CarEnterExitSystem : MonoBehaviour
     void EnterCar()
     {
         SoundManager.Instance.carChannel.PlayOneShot(SoundManager.Instance.carBegin);
+        SoundManager.Instance.carAlarm.Stop();
         SoundManager.Instance.carEngineFast.Play();
 
         Interaction.enabled = false;
@@ -90,6 +93,10 @@ public class CarEnterExitSystem : MonoBehaviour
 
     void ExitCar()
     {
+        Interaction.enabled = true;
+        SoundManager.Instance.carEngineFast.Stop();
+
+
         CarController.enabled = false;
         isDriving = false;
 
@@ -111,7 +118,7 @@ public class CarEnterExitSystem : MonoBehaviour
 
     void ApplyBrakes()
     {
-        float maxBrakeTorque = 10000f; // Đặt giá trị lực phanh tối đa
+        float maxBrakeTorque = 10000000000f; // Đặt giá trị lực phanh tối đa
 
         frontRightWheelCollider.brakeTorque = maxBrakeTorque;
         frontLeftWheelCollider.brakeTorque = maxBrakeTorque;

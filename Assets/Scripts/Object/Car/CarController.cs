@@ -25,6 +25,14 @@ public class CarController : MonoBehaviour
     {
         GetInput();
 
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            if(SoundManager.Instance.carHorn != null && !SoundManager.Instance.carHorn.isReadyToPlay)
+            {
+                hornCar();
+            }
+            
+        }
     }
 
     private void FixedUpdate()
@@ -105,5 +113,10 @@ public class CarController : MonoBehaviour
         wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
+    }
+
+    public void hornCar()
+    {
+        SoundManager.Instance.carChannel.PlayOneShot(SoundManager.Instance.carHorn);
     }
 }

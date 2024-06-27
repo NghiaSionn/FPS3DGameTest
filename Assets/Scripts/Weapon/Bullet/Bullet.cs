@@ -8,6 +8,10 @@ public class Bullet : MonoBehaviour
     public int bulletDamage;
 
 
+   
+
+
+
     private void OnCollisionEnter(Collision objectWeHit)
     {
        if (objectWeHit.gameObject.CompareTag("Target"))
@@ -64,6 +68,21 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if(objectWeHit.gameObject.CompareTag("Car"))
+        {           
+            if (objectWeHit.gameObject.GetComponent<Car>().isDead == false)
+            {
+                objectWeHit.gameObject.GetComponent<Car>().TakeDamage(bulletDamage);              
+            }
+            else
+            {
+                CreateCarExplosionEffect(objectWeHit);
+            }
+
+            CreateBulletImpactEffect(objectWeHit);
+            Destroy(gameObject);
+        }
     }
 
 
@@ -117,5 +136,19 @@ public class Bullet : MonoBehaviour
         Destroy(hole,5f);
     }
 
+    public void CreateCarExplosionEffect(Collision objectWeHit)
+    {
+        ContactPoint contact = objectWeHit.contacts[0];
 
+        GameObject carExplosionPrefabs = Instantiate(
+            GlobalRefernces.Instance.carExplosionEffect,
+            contact.point,
+            Quaternion.LookRotation(contact.normal)
+            );
+
+        carExplosionPrefabs.transform.SetParent(objectWeHit.gameObject.transform);
+
+
+        Destroy(carExplosionPrefabs, 5f);
+    }
 }

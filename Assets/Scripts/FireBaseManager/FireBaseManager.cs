@@ -56,10 +56,16 @@ public class FireBaseManager : MonoBehaviour
 
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(task =>
         {
-            if (task.IsCanceled) return;
-            if (task.IsFaulted) return;
-
-
+            if (task.IsCanceled)
+            {
+                Debug.Log(task.Exception);
+                return;
+            } 
+            if (task.IsFaulted)
+            {
+                Debug.Log(task.Exception);
+                return;
+            }
             if (task.IsCompleted)
             {
                 Debug.Log("tao thanh cong");

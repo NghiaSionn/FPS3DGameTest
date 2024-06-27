@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 427676271}
   - component: {fileID: 427676273}
   m_Layer: 5
-  m_Name: InputField (Legacy)
+  m_Name: Pass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -890,7 +890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 14.806671, y: 0.0000061989}
+  m_AnchoredPosition: {x: 14.806641, y: 0.0000061989}
   m_SizeDelta: {x: 305.1625, y: 461.8428}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &717428865
@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: 745228095}
   - component: {fileID: 745228097}
   m_Layer: 5
-  m_Name: InputField (Legacy) (1)
+  m_Name: Email
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,11 +1587,11 @@ PrefabInstance:
     - target: {fileID: 836078383206515619, guid: 20e109be73e712540ace063a5726e257, type: 3}
       propertyPath: ipEmail
       value: 
-      objectReference: {fileID: 427676273}
+      objectReference: {fileID: 745228097}
     - target: {fileID: 836078383206515619, guid: 20e109be73e712540ace063a5726e257, type: 3}
       propertyPath: ipPassWord
       value: 
-      objectReference: {fileID: 745228097}
+      objectReference: {fileID: 427676273}
     - target: {fileID: 836078383206515619, guid: 20e109be73e712540ace063a5726e257, type: 3}
       propertyPath: loginButton
       value: 

@@ -14,6 +14,7 @@ public class GlobalRefernces : MonoBehaviour
     public GameObject smokeGrenadeEffect;
     public GameObject bloodSprayEffect;
     public GameObject bloodDeadEffect;
+    public GameObject carExplosionEffect;
 
 
     private void Awake()
