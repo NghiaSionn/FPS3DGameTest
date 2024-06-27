@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +8,7 @@ public class CarController : MonoBehaviour
     private float horizontalInput, verticalInput;
     private float currentSteerAngle, currentbreakForce;
     private bool isBreaking;
+
 
     // Settings
     [SerializeField] private float motorForce, breakForce, maxSteerAngle;
@@ -23,7 +24,7 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         GetInput();
-        
+
     }
 
     private void FixedUpdate()
@@ -42,19 +43,39 @@ public class CarController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         // Breaking Input
-        isBreaking = Input.GetKey(KeyCode.Space);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isBreaking = true;
+            if (SoundManager.Instance.carBreake != null)
+            {
+                if (!SoundManager.Instance.carBreake.isPlaying)
+                {
+                    SoundManager.Instance.carBreake.Play();
+                }
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isBreaking = false;
+            
+        }
     }
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;      
+
+        // Điều chỉnh lực động cơ và lực phanh
+        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();
     }
 
+
     private void ApplyBreaking()
     {
+
         frontRightWheelCollider.brakeTorque = currentbreakForce;
         frontLeftWheelCollider.brakeTorque = currentbreakForce;
         rearLeftWheelCollider.brakeTorque = currentbreakForce;
@@ -63,6 +84,7 @@ public class CarController : MonoBehaviour
 
     private void HandleSteering()
     {
+               
         currentSteerAngle = maxSteerAngle * horizontalInput;
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;

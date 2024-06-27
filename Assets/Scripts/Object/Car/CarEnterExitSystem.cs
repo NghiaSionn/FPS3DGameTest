@@ -5,6 +5,9 @@ using UnityEngine;
 public class CarEnterExitSystem : MonoBehaviour
 {
     public MonoBehaviour CarController;
+    public MonoBehaviour Interaction;
+
+
     public Transform Car;
     public Transform Player;
 
@@ -15,6 +18,8 @@ public class CarEnterExitSystem : MonoBehaviour
     public GameObject playerPosition;
     public GameObject middlePoint;
     public GameObject ammo;
+    public GameObject speedCarText;
+    
 
     public WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
     public WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
@@ -26,8 +31,12 @@ public class CarEnterExitSystem : MonoBehaviour
     void Start()
     {
         CarController.enabled = false;
+        Interaction.enabled = true;
+
         DriveUi.gameObject.SetActive(false);
         isDriving = false;
+        speedCarText.gameObject.SetActive(false);
+        SoundManager.Instance.carEngineFast.Stop();
     }
 
     // Update is called once per frame
@@ -57,6 +66,10 @@ public class CarEnterExitSystem : MonoBehaviour
 
     void EnterCar()
     {
+        SoundManager.Instance.carChannel.PlayOneShot(SoundManager.Instance.carBegin);
+        SoundManager.Instance.carEngineFast.Play();
+
+        Interaction.enabled = false;
         CarController.enabled = true;
         isDriving = true;
 
@@ -64,6 +77,7 @@ public class CarEnterExitSystem : MonoBehaviour
         playerPosition.gameObject.SetActive(false);
         middlePoint.gameObject.SetActive(false);
         ammo.gameObject.SetActive(false);
+        speedCarText.gameObject.SetActive(true);
 
         // Gắn người chơi vào xe
         Player.transform.SetParent(Car);

@@ -47,7 +47,14 @@ public class SoundManager : MonoBehaviour
     public AudioClip playerDeath;
     public AudioClip deathMusic;
 
-    
+
+    public AudioSource carChannel;
+    public AudioSource carEngine;
+    public AudioSource carBreake;
+    public AudioSource carEngineFast;
+
+    public AudioClip carBegin;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
