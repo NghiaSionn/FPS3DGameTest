@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
             print("Player Dead");
             PlayerDead();
             isDead = true;
+            Destroy(gameObject,4f);
         }
         else
         {

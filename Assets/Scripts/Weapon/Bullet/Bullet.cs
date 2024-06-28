@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
        if (objectWeHit.gameObject.CompareTag("Target"))
         {
             Debug.Log("Trúng mục tiêu");
+            SoundManager.Instance.PlayRandomHitSound("Impact");
             CreateBulletImpactEffect(objectWeHit);
             Destroy(gameObject);
         }
@@ -25,6 +26,7 @@ public class Bullet : MonoBehaviour
         if (objectWeHit.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Bắn vào tường");
+            SoundManager.Instance.PlayRandomHitSound("Impact");
             CreateBulletImpactEffect(objectWeHit);
             Destroy(gameObject);
         }
@@ -33,6 +35,7 @@ public class Bullet : MonoBehaviour
         if (objectWeHit.gameObject.CompareTag("Plane"))
         {
             Debug.Log("Bắn vào đất");
+            SoundManager.Instance.PlayRandomHitSound("Impact");
             CreateBulletImpactEffect(objectWeHit);
             Destroy(gameObject);
         }
@@ -40,11 +43,13 @@ public class Bullet : MonoBehaviour
 
         if (objectWeHit.gameObject.CompareTag("Bear"))
         {
-            Debug.Log("Bắn vào chai");      
+            Debug.Log("Bắn vào chai");
+
+            SoundManager.Instance.PlayRandomHitSound("Glass");
             
+
             objectWeHit.gameObject.GetComponent<BearBottle>().Shatter();
             Destroy(gameObject);
-
         }
 
 
@@ -54,7 +59,8 @@ public class Bullet : MonoBehaviour
 
 
             if(objectWeHit.gameObject.GetComponent<Enemy>().isDead == false)
-            {
+            {              
+                SoundManager.Instance.PlayRandomHitSound("Body");
                 objectWeHit.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
                 CreateBloodSprayEffect(objectWeHit);
             }
@@ -73,6 +79,7 @@ public class Bullet : MonoBehaviour
         {           
             if (objectWeHit.gameObject.GetComponent<Car>().isDead == false)
             {
+                SoundManager.Instance.PlayRandomHitSound("Metal");
                 objectWeHit.gameObject.GetComponent<Car>().TakeDamage(bulletDamage);              
             }
             else
@@ -116,7 +123,7 @@ public class Bullet : MonoBehaviour
         bloodSprayPrefab.transform.SetParent(objectWeHit.gameObject.transform);
 
 
-        Destroy(bloodSprayPrefab, 3f);
+        Destroy(bloodSprayPrefab, 2f);
     }
 
 

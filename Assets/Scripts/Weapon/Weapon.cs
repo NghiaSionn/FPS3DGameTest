@@ -24,6 +24,8 @@ public class Weapon : MonoBehaviour
     public float spreadIntensity;
     public float hipSpreadIntensity;
     public float adsSpreadIntensity;
+    // Hệ số nhân của độ giật
+    public float recoilMultiplier = 1f;
 
 
     public GameObject muzzleEffect;
@@ -45,6 +47,9 @@ public class Weapon : MonoBehaviour
     public Camera mainCamera;
     public GameObject scopeOverlay;
     //public ProceduralRecoil recoil;
+    public RecoilController recoilController;
+    public ParticleSystem shellParticle;
+ 
 
 
     [Header("Thay đổi góc nhìn")]
@@ -83,6 +88,7 @@ public class Weapon : MonoBehaviour
         readyToShoot = true;
         burstBulletsLeft = bulletsPerBurst;
         animator = GetComponent<Animator>();
+        recoilController = Camera.main.GetComponent<RecoilController>();
 
 
 
@@ -124,6 +130,7 @@ public class Weapon : MonoBehaviour
             else if (currentShootingMode == ShootingMode.Single)
             {
                 isShooting = Input.GetKeyDown(KeyCode.Mouse0);
+ 
             }
 
 
@@ -192,6 +199,8 @@ public class Weapon : MonoBehaviour
 
         bulletsLeft--;
 
+        shellParticle.Emit(1);
+        
 
         muzzleEffect.GetComponent<ParticleSystem>().Play();
 
@@ -216,9 +225,12 @@ public class Weapon : MonoBehaviour
         // Spawn đạn
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.LookRotation(shootingDirection));
 
+        // áp dụng recoil khi bắn 
+        float recoilY = Random.Range(0.05f, 0.1f) * recoilMultiplier * RecoilController.Instance.positionRecoilAmount;
+        float recoilRotationX = Random.Range(-1f, -2f) * recoilMultiplier * RecoilController.Instance.rotationRecoilAmount;
+        RecoilController.Instance.ApplyRecoil(recoilY, recoilRotationX);
 
-        //recoil.recoil();
-
+       
 
         // gây damage 
         Bullet bul = bullet.GetComponent<Bullet>();
@@ -244,7 +256,7 @@ public class Weapon : MonoBehaviour
     }
 
 
-  
+
 
 
     private void EnterADS()

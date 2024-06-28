@@ -497,8 +497,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 6550580567739934058}
   mouseSensitivity: 500
-  topClamp: -30
-  bottomClamp: 30
+  topClamp: -50
+  bottomClamp: 50
 --- !u!114 &5171591609265848376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,6 +923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 531393319613524008}
   - component: {fileID: 8997803941664613411}
+  - component: {fileID: 2188496535650087480}
   m_Layer: 0
   m_Name: CameraParent
   m_TagString: Untagged
@@ -968,3 +969,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2188496535650087480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9215506336189652063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adc5baa9bc98c5448d1f77ef63d7e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionRecoilAmount: 0.1
+  rotationRecoilAmount: 2
+  recoilSpeed: 10
+  recoverySpeed: 5

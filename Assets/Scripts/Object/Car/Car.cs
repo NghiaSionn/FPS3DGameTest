@@ -43,4 +43,16 @@ public class Car : MonoBehaviour
     {
         lastHitDirection = direction;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("ZombieHand"))
+        {
+            if (isDead == false)
+            {
+                TakeDamage(other.GetComponent<ZombieHand>().damage);
+            }
+
+        }
+    }
 }

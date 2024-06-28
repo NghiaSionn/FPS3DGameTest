@@ -53,8 +53,11 @@ public class Enemy : MonoBehaviour
         {
             animator.SetTrigger("DAMAGE");
 
-            //Âm thanh khi nhận dame
-            SoundManager.Instance.zombieChannel2.PlayOneShot(SoundManager.Instance.zombieHurt);
+            if (SoundManager.Instance.zombieHurt != null)
+            {
+                SoundManager.Instance.zombieChannel2.PlayOneShot(SoundManager.Instance.zombieHurt);
+            }
+            
         }      
     }
 
