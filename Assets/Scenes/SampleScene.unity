@@ -12374,6 +12374,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6403001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.55104285
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195591935135858670, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.63
       objectReference: {fileID: 0}
@@ -12425,6 +12433,14 @@ PrefabInstance:
       propertyPath: recoilController
       value: 
       objectReference: {fileID: 826875128}
+    - target: {fileID: 2852706770016935909, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852706770016935909, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.675
+      objectReference: {fileID: 0}
     - target: {fileID: 8311397118991689307, guid: 0f581a47e87da3647b8cee443c3245a3, type: 3}
       propertyPath: m_Name
       value: AK47
