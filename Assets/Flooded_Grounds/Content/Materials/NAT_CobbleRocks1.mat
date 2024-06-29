@@ -72,6 +72,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 312f2f1204d2edc45bd30d34947f04f4, type: 3}
         m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
+    - _layer1Breakup:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _layer1Norm:
         m_Texture: {fileID: 2800000, guid: 3cc5713907ad64743bff036ba79ef950, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -99,6 +103,7 @@ Material:
     - _UVSec: 0
     - _VMask: 0
     - _ZWrite: 1
+    - _layer1BreakupAmnt: 0.5
     - _layer1Metal: 0
     - _layer1Tiling: 1
     m_Colors:

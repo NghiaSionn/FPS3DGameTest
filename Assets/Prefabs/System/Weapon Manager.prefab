@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &220601506442119893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2671377959204934697}
+  - component: {fileID: 5879900810646983398}
+  m_Layer: 0
+  m_Name: Weapon Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2671377959204934697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220601506442119893}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.84838, y: 1.4631208, z: 20.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5879900810646983398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220601506442119893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d132b915b53a74a9f4d8499edc34e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  activeWeaponSlot: {fileID: 0}
+  totalRifleAmmo: 0
+  totalSniperAmmo: 0
+  throwForce: 40
+  throwableSpawn: {fileID: 0}
+  forceMultiplier: 0
+  forceMultiplierLimit: 2
+  maxLethals: 3
+  lethalsCount: 0
+  equippedLethalType: 0
+  grenadePrefab: {fileID: 5828877693127703741, guid: 998742e7adf76754e9e78904f921774e, type: 3}
+  maxTacticals: 2
+  tacticalsCount: 0
+  equippedTacticalType: 2
+  smokeGrenadePrefab: {fileID: 7768678598784543418, guid: 992f767dc2787c24d834f82d6cd7a466, type: 3}

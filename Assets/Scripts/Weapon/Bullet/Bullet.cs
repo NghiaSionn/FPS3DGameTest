@@ -8,10 +8,7 @@ public class Bullet : MonoBehaviour
     public int bulletDamage;
 
 
-   
-
-
-
+  
     private void OnCollisionEnter(Collision objectWeHit)
     {
        if (objectWeHit.gameObject.CompareTag("Target"))
@@ -36,6 +33,14 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Bắn vào đất");
             SoundManager.Instance.PlayRandomHitSound("Impact");
+            CreateBulletImpactEffect(objectWeHit);
+            Destroy(gameObject);
+        }
+
+        if (objectWeHit.gameObject.CompareTag("Metal"))
+        {
+            Debug.Log("Trúng sắt");
+            SoundManager.Instance.PlayRandomHitSound("Metal");
             CreateBulletImpactEffect(objectWeHit);
             Destroy(gameObject);
         }

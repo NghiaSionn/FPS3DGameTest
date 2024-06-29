@@ -18,8 +18,8 @@ GameObject:
   m_Name: Ammo Sniper Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1647712654389172333
 Transform:
@@ -29,9 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6891565836468854510}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9975823, z: -0, w: -0.06949533}
+  m_LocalRotation: {x: -0, y: -0.9975823, z: 0, w: -0.06949533}
   m_LocalPosition: {x: -5.349537, y: 0.4802475, z: 0.648}
-  m_LocalScale: {x: 0.09187538, y: 0.09187538, z: 0.09187539}
+  m_LocalScale: {x: 0.09187539, y: 0.09187538, z: 0.0918754}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
