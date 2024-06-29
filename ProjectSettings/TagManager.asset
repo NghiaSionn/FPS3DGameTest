@@ -18,6 +18,8 @@ TagManager:
   - FxTemporaire
   - Metal
   - Water
+  - Door
+  - Wood
   layers:
   - Default
   - TransparentFX
