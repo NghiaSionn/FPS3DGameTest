@@ -22,7 +22,6 @@ public class Lean : MonoBehaviour
 
         }
 
-
         else if (Input.GetKey(KeyCode.E) && !Physics.Raycast(transform.position, transform.right, out hit, 1f, layers))
         {
             Debug.Log("Nghieng phai");
