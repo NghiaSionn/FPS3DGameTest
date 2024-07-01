@@ -20,7 +20,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] hitGlass;
     public AudioClip[] hitMetal;
     public AudioClip[] hitImpact;
+    public AudioClip[] hitWood;
     public AudioClip[] bulletCasing;
+
 
 
     [Header("Âm thanh Reload")]
@@ -120,6 +122,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "Impact":
                 selectedSounds = hitImpact;
+                break;
+            case "Wood":
+                selectedSounds = hitWood;
                 break;
             default:
                 Debug.LogWarning("Unknown target type: " + targetType);

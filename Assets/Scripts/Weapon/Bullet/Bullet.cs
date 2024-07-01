@@ -45,6 +45,22 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if(objectWeHit.gameObject.CompareTag("Door"))
+        {
+            Debug.Log("Trúng cửa");
+            SoundManager.Instance.PlayRandomHitSound("Wood");
+            CreateBulletImpactEffect(objectWeHit);
+            Destroy(gameObject);
+        }
+
+        if (objectWeHit.gameObject.CompareTag("Wood"))
+        {
+            Debug.Log("Trúng gỗ");
+            SoundManager.Instance.PlayRandomHitSound("Wood");
+            CreateBulletImpactEffect(objectWeHit);
+            Destroy(gameObject);
+        }
+
 
         if (objectWeHit.gameObject.CompareTag("Bear"))
         {
