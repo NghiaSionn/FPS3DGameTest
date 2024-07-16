@@ -1,28 +1,76 @@
-using UnityEngine;
-using UnityEditor.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-
 public class Teleport : MonoBehaviour
 {
-    private void OnParticleCollision(GameObject other)
+    public string sceneToLoad = "Scene_A";
+    public float teleportTime = 3f;
+    private bool isTeleporting = false;
+    private Coroutine teleportCoroutine;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Da vao cong tele ");
-            LoadSceneWithDelay();
+            Debug.Log("Player entered the portal");
+            if (teleportCoroutine == null)
+            {
+                teleportCoroutine = StartCoroutine(TeleportAfterDelay(other.gameObject));
+            }
         }
     }
 
-    public void LoadSceneWithDelay()
+    private void OnTriggerExit(Collider other)
     {
-        StartCoroutine(LoadSceneAfterDelay("Scene_A"));
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Player left the portal");
+            if (teleportCoroutine != null)
+            {
+                StopCoroutine(teleportCoroutine);
+                teleportCoroutine = null;
+                ResetPlayerCameraEffect(other.gameObject);
+            }
+        }
     }
 
-    private IEnumerator LoadSceneAfterDelay(string sceneName)
+    private IEnumerator TeleportAfterDelay(GameObject player)
     {
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(sceneName);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < teleportTime)
+        {
+            elapsedTime += Time.deltaTime;
+            ApplyCameraEffect(player, elapsedTime / teleportTime);
+            yield return null;
+        }
+
+        Debug.Log("Teleporting player");
+        SceneManager.LoadScene(sceneToLoad);
+    }
+
+    private void ApplyCameraEffect(GameObject player, float progress)
+    {
+        // Thêm mã để xoay camera hoặc hiệu ứng say rượu ở đây
+        // Ví dụ:
+        Camera playerCamera = player.GetComponentInChildren<Camera>();
+        if (playerCamera != null)
+        {
+            playerCamera.transform.localRotation = Quaternion.Euler(
+                Mathf.Sin(Time.time * 10f) * 10f * progress,
+                Mathf.Cos(Time.time * 10f) * 10f * progress,
+                0f
+            );
+        }
+    }
+
+    private void ResetPlayerCameraEffect(GameObject player)
+    {
+        Camera playerCamera = player.GetComponentInChildren<Camera>();
+        if (playerCamera != null)
+        {
+            playerCamera.transform.localRotation = Quaternion.identity;
+        }
     }
 }

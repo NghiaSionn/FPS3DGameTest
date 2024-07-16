@@ -7,33 +7,22 @@ public class FlashLight : MonoBehaviour
     public GameObject Light;
     public bool isLighting;
 
-
     // Start is called before the first frame update
     void Start()
     {
         Light.SetActive(false);
+        isLighting = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("Bật đèn");
-            isLighting = true;
-            Light.SetActive(true);
-
+            SoundManager.Instance.flashLightChannel.PlayOneShot(SoundManager.Instance.flashLight);
+            isLighting = !isLighting; // Chuyển đổi trạng thái của đèn pin
+            Light.SetActive(isLighting); // Bật hoặc tắt đèn dựa trên trạng thái
+            Debug.Log(isLighting ? "Bật đèn" : "Tắt đèn");
         }
-
-        if(isLighting)
-        {
-            if (Input.GetKeyUp(KeyCode.F))
-            {
-                Debug.Log("Tắt đèn");
-                isLighting = false;
-                Light.SetActive(false);
-            }
-        }
-        
     }
 }

@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
         if (HP <= 0)
         {
-            print("Player Dead");
+            print("Player Dead");           
             PlayerDead();
             isDead = true;
             //Destroy(gameObject,4f);
@@ -52,9 +52,11 @@ public class Player : MonoBehaviour
 
     private void PlayerDead()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         // âm thanh player chết 
         SoundManager.Instance.playerChannel.PlayOneShot(SoundManager.Instance.playerDeath);
-
+      
 
         GetComponent<PlayerMovement3>().enabled = false;
         GetComponent<MouseMovement>().enabled = false;

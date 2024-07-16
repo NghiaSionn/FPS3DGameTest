@@ -32,6 +32,10 @@ public class SoundManager : MonoBehaviour
     [Header("Âm thanh rỗng")]
     public AudioSource emtyshooting;
 
+    [Header("Âm thanh Đèn pin")]
+    public AudioSource flashLightChannel;
+    public AudioClip flashLight;
+
     [Header("Âm thanh ném")]
     public AudioSource throwablesChannel;
     public AudioClip grenadeSound;
