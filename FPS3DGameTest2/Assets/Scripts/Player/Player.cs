@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
     private void PlayerDead()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Debug.Log("Cursor unlock called");
 
         // âm thanh player chết 
         SoundManager.Instance.playerChannel.PlayOneShot(SoundManager.Instance.playerDeath);

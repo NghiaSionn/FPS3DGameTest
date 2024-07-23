@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public string playAgainSence;
-
-    public GameObject pauseMenuUI; 
+    public string playAgainScene;
+    public GameObject pauseMenuUI;
+    public GameObject optionPanel;
 
     private bool isPaused = false;
 
@@ -15,7 +15,14 @@ public class GameManager : MonoBehaviour
         {
             if (isPaused)
             {
-                ResumeGame();
+                if (optionPanel.activeSelf)
+                {
+                    ShowPauseMenu();
+                }
+                else
+                {
+                    ResumeGame();
+                }
             }
             else
             {
@@ -27,23 +34,39 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
+        optionPanel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f; // Tiếp tục game
+        AudioListener.pause = false; // Tiếp tục âm thanh
         isPaused = false;
     }
 
     public void PauseGame()
     {
         pauseMenuUI.SetActive(true);
+        optionPanel.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f; // Dừng game
+        AudioListener.pause = true; // Dừng âm thanh
         isPaused = true;
+    }
+
+    public void ShowPauseMenu()
+    {
+        pauseMenuUI.SetActive(true);
+        optionPanel.SetActive(false);
+    }
+
+    public void ShowOptionPanel()
+    {
+        pauseMenuUI.SetActive(false);
+        optionPanel.SetActive(true);
     }
 
     public void PlayAgain()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        SceneManager.LoadScene(playAgainSence);
+        SceneManager.LoadScene(playAgainScene);
     }
 
     public void QuitGame()
@@ -51,4 +74,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Quitting game...");
         Application.Quit();
     }
+
+   
 }

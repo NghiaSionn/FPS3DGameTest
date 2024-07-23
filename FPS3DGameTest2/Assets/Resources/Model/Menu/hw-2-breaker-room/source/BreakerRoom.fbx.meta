@@ -1,0 +1,354 @@
+fileFormatVersion: 2
+guid: 424286e87589b464cba4110289146886
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button
+    second: {fileID: 2100000, guid: 975a00f5190c7c84daf0283c7080c522, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BeamsA_01.001
+    second: {fileID: 2100000, guid: 4c79aca5fd7495d4a8435e8fca18d4de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BreakerConsole.mat
+    second: {fileID: 2100000, guid: 53e4792ee4ec5564aabef9a99f63f1a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BreakerDial.001
+    second: {fileID: 2100000, guid: 9e6e02ebbd016cd49a9199d188529dba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BreakerLever.001
+    second: {fileID: 2100000, guid: e96142052b257294db01326f9e545164, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BreakerRoomGenerator.mat
+    second: {fileID: 2100000, guid: 7edd772a835e82447bedc7e5fa6aad76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BreakerRoomPipe.mat
+    second: {fileID: 2100000, guid: b4f8814f4a74713458038ff19b2d9d5e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_BreakerRoomStage.mat
+    second: {fileID: 2100000, guid: a9a2a7626cb935045a604866fd47852c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_ButtonPanel.mat
+    second: {fileID: 2100000, guid: df22e87753aa8ee478cb602afcd4e046, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Cable.mat
+    second: {fileID: 2100000, guid: 2b27cae024ab43e4aa9f005458f484a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Cable_03.mat
+    second: {fileID: 2100000, guid: 395bfb419bf65b94995d3426069b7c12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_CommonLightSurface01.001
+    second: {fileID: 2100000, guid: 16b2858498cb76841a39639a73eb0645, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_CommonPlasticBlack01.001
+    second: {fileID: 2100000, guid: 65152a837b150364d87df08685982175, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_CommonPlasticBlack01.mat
+    second: {fileID: 2100000, guid: 3707bf10e88620e4f902ac04a1970679, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Conduit.mat
+    second: {fileID: 2100000, guid: 3b7ea5be2f7457240a96948e91898d9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_DinerA_SupportPoleA_EndCap.001
+    second: {fileID: 2100000, guid: b4d8df0b11f6b954ea983bc1332e509b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_DinerA_SupportPoleA_EndCap.mat
+    second: {fileID: 2100000, guid: 853a58b13ccc1f24a904cc1335c2a0c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_DinerA_SupportPoleA_Main.001
+    second: {fileID: 2100000, guid: ef0e571a476e704479e98f8d7c37bd0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_DinerA_SupportPoleA_Main.mat
+    second: {fileID: 2100000, guid: 17ac9b63e5475c2479534d41286f2116, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Diner_ExteriorWallA_TintA.mat
+    second: {fileID: 2100000, guid: e64768ca398ab1a4ba82d840f234fb87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_ElectricBox.mat
+    second: {fileID: 2100000, guid: 00951c60ea2b2544b9ba6b309349f4d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Electronics_02.002
+    second: {fileID: 2100000, guid: d62689af75ba3974a8b303ed98639206, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Electronics_02.003
+    second: {fileID: 2100000, guid: 72dd77c0d4baec745b15ef13b54345d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Floor_01.mat
+    second: {fileID: 2100000, guid: 2e8c66aabde628a4aa29fb90014d7345, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_MasterSciFiPopulate.mat
+    second: {fileID: 2100000, guid: 18853e3142dc2fb4fbbab15598403fd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Pipe02.002
+    second: {fileID: 2100000, guid: eae8a375a4c40e44f8165e852df0ed62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Pipe02.mat
+    second: {fileID: 2100000, guid: 65c612dc5afe0f4499017149823c7751, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Poster01.mat
+    second: {fileID: 2100000, guid: 8063e05d66d0fbd49ae0dbaee49dad94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_RecorderHolder.mat
+    second: {fileID: 2100000, guid: 0e58e1462c8a33b4bbdc8987cd756540, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_ServerRoomAtlasA.mat
+    second: {fileID: 2100000, guid: e24a2dd4bf88af54f88ed55ca534327a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_ServerRoomAtlasA1.mat
+    second: {fileID: 2100000, guid: f19540f2fabc9ac479f8c42cffcc7f5e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_ServerRoomMesh.mat
+    second: {fileID: 2100000, guid: 316917b02d14aec42a2b79ca52d8f007, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SplineCable.001
+    second: {fileID: 2100000, guid: 64b0c1c959a47074a82dec0b4caa67a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SplineCable.002
+    second: {fileID: 2100000, guid: 39b6726fcdc103e4c8c2ce8d01bc933a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SplineCable.003
+    second: {fileID: 2100000, guid: a13ba03c1f37ecc40abfcfb6320aaba8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SplineCable.004
+    second: {fileID: 2100000, guid: b44d6a401ace7354b87fbd2561bf9a0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SplineCable.005
+    second: {fileID: 2100000, guid: ad31dc6e24b799a40bce92c4f0964027, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SplineCable.006
+    second: {fileID: 2100000, guid: 5aa3e9abbf2fef040bec0f09ab400fa8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SplineCable.008
+    second: {fileID: 2100000, guid: 6697828d0ae95e74b8ecb6823052b57f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SplineCable.mat
+    second: {fileID: 2100000, guid: 84567e0d632dff6488637a8ba9cc0647, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_SwitchPanel.mat
+    second: {fileID: 2100000, guid: 9ef4122e355798d469fb8cf8cc9fbb35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_TVCartItems.mat
+    second: {fileID: 2100000, guid: 0835b12273620094ab8f50f0d7ea380b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_TallFireAndGas.001
+    second: {fileID: 2100000, guid: f549db51c4f38cf41a981fb9582eea7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_TallFireAndGas.mat
+    second: {fileID: 2100000, guid: 97274e3eb47a18148914fc38965721bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Vent.mat
+    second: {fileID: 2100000, guid: ff3a9385d6b4aa1468fec0779f07465b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_WallB_04.mat
+    second: {fileID: 2100000, guid: 339b51c20db55c24f9fe2a10302d033e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_ceilingTile.mat
+    second: {fileID: 2100000, guid: 7db6a93cea7be3548a817436602b3514, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_pipes_m_skin_02.mat
+    second: {fileID: 2100000, guid: 4337344919d0a004e9bb173ae7edbe24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WorldGridMaterial
+    second: {fileID: 2100000, guid: 20283800cda09d6478b62c62e950c807, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
